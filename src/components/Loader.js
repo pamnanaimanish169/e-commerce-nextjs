@@ -1,14 +1,9 @@
 import React from "react";
+import styles from "../styles/Home.module.css";
 
 const Loader = () => {
     return (
-        <img style={{
-            display: "block",
-            marginLeft: "auto",
-            marginRight: "auto",
-            width: "50%",
-            objectFit: "scale-down"
-        }} src='../loading.gif' />
+        <img className={styles.loader} src='../loading.gif' />
     )
 }
 

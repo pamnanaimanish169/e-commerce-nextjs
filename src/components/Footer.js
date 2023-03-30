@@ -47,25 +47,14 @@ const Footer = () => {
     return (
         <>
             {/* <!-- Footer --> */}
-            <footer style={{
-                background: 'black',
-                color: 'white'
-            }}>
+            <footer className={styles.footer}>
                 <div className={`p-5 ${styles.footerWrapper}`}>
                     <div>
-                        <span style={{
-                            fontFamily: 'Poppins',
-                            fontWeight: '900',
-                            fontSize: '40px'
-                        }}>
+                        <span className={styles.footerSubtitle}>
                             FASHION
                         </span>
-                        <p style={{
-                            fontFamily: 'Poppins',
-                            fontWeight: '400',
-                            fontSize: '24px',
-                            lineHeight: "40px",
-                            color: '#8E8E8E'
+                        <p className={styles.footerDescription} style={{
+                            
                         }}>
                             Complete your style with awesome clothes from us.
                         </p>
@@ -77,10 +66,10 @@ const Footer = () => {
 
                     <div className={styles.footerLlinks}>
                         <div>
-                            <label style={{ fontWeight: "bold" }} className={styles.company}>Category</label>
-                            <ul style={{ listStyle: "none", paddingLeft: 0, marginLeft: "5px" }}>
+                            <label className={styles.company}>Category</label>
+                            <ul className={styles.footerLinksWrapper}>
                                 {
-                                    products.map((element, index) => (
+                                    products.map((element) => (
                                         <li className={styles.listItem} onClick={() => navigateTo(element)}>{getTitleCase(element.replace(/[^a-zA-Z ]/g, " "))}</li>
                                     ))
                                 }

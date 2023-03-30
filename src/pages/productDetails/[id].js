@@ -23,7 +23,7 @@ const productDetails = () => {
                 } else {
                     setProductData(data)
                 }
-            }).catch((error) => console.log('error in connecting', error));
+            }).catch((error) => console.error('error in connecting', error));
     }, [id]);
 
     const handleAddToCart = (item) => {
@@ -37,41 +37,17 @@ const productDetails = () => {
     return (
         <div>
             <Header></Header>
-            <div className={`d-flex justify-content-center ${styles.productWrapper}`} style={{
-                	marginTop: "80px",	
-                    marginBottom: "80px"
-            }}>
-                <div className={styles.productImage}>
-                    <img style={{
-                        width: "100%",
-                        objectFit: "cover",
-                        borderRadius: "50px",
-                        height: "600px"
-                    }} src={productData?.thumbnail} />
+            <div className={`d-flex justify-content-center ${styles.productWrapper}`}>
+                <div className={styles.productImageWrapper}>
+                    <img className={styles.productImage} src={productData?.thumbnail} />
                 </div>
 
                 <div className={styles.productDescription}>
                     <h1>{productData?.title}</h1>
                     <p>{productData?.description}</p>
-                    <div style={{ display: 'flex' }}>
-                        <p style={{
-                            fontSize: "26px",
-                            fontWeight: "300",
-                            color: "#43474D",
-                            marginRight: "20px",
-                        }}>₹{productData?.price}</p>
-                        <a style={{
-                            display: "inline-block",
-                            backgroundColor: "#7DC855",
-                            borderRadius: "6px",
-                            fontSize: "16px",
-                            color: "#FFFFFF",
-                            textDecoration: "none",
-                            padding: "9px 30px",
-                            transition: "all .5s",
-                            border: "none",
-                            height: "45px"
-                        }} onClick={() => handleAddToCart(productData)}>Add To Cart</a>
+                    <div className="d-flex">
+                        <p className={styles.individualPrice}>₹{productData?.price}</p>
+                        <a className={styles.addToCart} onClick={() => handleAddToCart(productData)}>Add To Cart</a>
                     </div>
                 </div>
             </div>

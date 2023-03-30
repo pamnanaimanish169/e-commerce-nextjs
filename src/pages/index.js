@@ -15,15 +15,13 @@ export default function Home() {
   const [message, setMessage] = useState('');
   const dispatch = useDispatch();
 
-  const paymentStatusPromise = new Promise((resolve, reject) => {
+  const paymentStatusPromise = new Promise((resolve) => {
     let path = '';
     const query = new URLSearchParams(window.location.search);
 
     if (query.get('success')) {
       path = '/success';
-    }
-
-    else if (query.get('canceled')) {
+    } else if (query.get('canceled')) {
       path = '/failure';
     }
 
@@ -40,7 +38,7 @@ export default function Home() {
         setIsLoading(false)
       }, 1000);
     })
-    fetch('https://dummyjson.com/products', {}).then((res) => res.json()).then((data) => { setProductList(data?.products) }).catch((err) => { console.log('err', err) });
+    fetch('https://dummyjson.com/products', {}).then((res) => res.json()).then((data) => { setProductList(data?.products) }).catch((err) => { console.error('err', err) });
   }, []);
 
   const navigateTo = (category) => {
@@ -52,7 +50,6 @@ export default function Home() {
   }
 
   const handleEmailOnChange = (event) => {
-    console.log(event.target.value, 'event');
     setEmail(event.target.value);
   }
 

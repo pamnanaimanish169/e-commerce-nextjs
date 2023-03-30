@@ -52,9 +52,11 @@ https://dribbble.com/shots/3815376-Shopping-Cart-Dropdown
 - Remove Inline styles for success.js & failure.js
 - Remove products.json
 
+# 30-03-2023
 
-
-
+- Merge the code & upload to github
+- Clean up the 404, productListing(all), productListing(category), productDetails(id), Loader  , footer, Header.js pages
+- 
 
 
 

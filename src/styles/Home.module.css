@@ -20,6 +20,7 @@
   font-size: 24px;
   letter-spacing: 0.02em;
   color: #D9D9D9;
+  font-weight: bold;
 }
 
 .list-item {
@@ -277,7 +278,7 @@
 
 }
 
-.productImage {
+.productImageWrapper {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -309,9 +310,11 @@
 
   .productWrapper {
     flex-direction: column;
+    margin-top: 80px;
+    margin-bottom: 80px;
   }
 
-  .productImage {
+  .productImageWrapper {
     width: 100%;
     margin-top: 50px;
     margin-bottom: 0px;
@@ -347,26 +350,19 @@
 .dropdown {
   position: relative;
   display: inline-block;
+  font-family: "Poppins";
 }
-
-/* Dropdown Content (Hidden by Default) */
-/* .dropdownContent {
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-/* Links inside the dropdown */
-/* .dropdownContent a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-} */
 
 /* Change color of dropdown links on hover */
+.dropdownContent {
+  position: fixed;
+  top: 60px;
+  right: 10px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
 .dropdownContent a:hover {
   background-color: #ddd;
 }
@@ -467,3 +463,193 @@
 }
 
 /* Success & Failure pages */
+
+
+/* 404 page */
+.NotFoundContainer {
+  margin: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.backToHomeBtn {
+  background: black;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+}
+
+/* 404 page */
+
+
+/* Product Listing All */
+.cardImgTop {
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50px;
+}
+
+.cardImgWrapper {
+  width: 18rem;
+  margin: 0 auto;
+}
+
+/* Product Listing All */
+
+/* Product Details ID */
+.addToCart {
+  display: inline-block;
+  background-color: #7DC855;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 9px 30px;
+  transition: all .5s;
+  border: none;
+  height: 45px;
+}
+
+.individualPrice {
+  font-size: 26px;
+  font-weight: 300;
+  color: #43474D;
+  margin-right: 20px;
+}
+
+.productImage {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50px;
+  height: 600px
+}
+
+/* Product Details ID */
+
+/* Loader */
+.loader {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  object-fit: scale-down;
+}
+
+/* Loader */
+
+
+/* Footer */
+.footerLinksWrapper {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 5px;
+}
+
+.footerSubtitle {
+  font-family: Poppins;
+  font-weight: 900;
+  font-size: 40px;
+}
+
+.footerDescription {
+  font-family: Poppins;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 40px;
+  color: #8E8E8E
+}
+
+.footer {
+  background: black;
+  color: white;
+}
+
+/* Footer */
+
+
+/* Header */
+.handleCheckoutBtn {
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: Poppins;
+}
+
+.totalContent {
+  padding-top: 10px;
+  font-family: Poppins;
+}
+
+.cartListWrapper {
+  position: relative;
+  overflow: auto;
+  height: 290px;
+  padding-left: 0px;
+}
+
+.fillAvailable {
+  width: -webkit-fill-available
+}
+
+.itemThumbnail {
+  width: 75px;
+  vertical-align: middle;
+  display: table-cell;
+  height: 60px;
+  object-fit: cover;
+  margin-right: 20px;
+  border-radius: 20px;
+}
+
+.itemPrice {
+  color: grey
+}
+
+.amountWrapper {
+  border: solid #DCDCDC 1px
+}
+
+.amount {
+  font-family: Poppins;
+  padding-left: 5px;
+  padding-right: 5px;
+  display: table-cell;
+  vertical-align: middle;
+  height: 50px;
+}
+
+.incrementWrapper {
+  border-left: solid #DCDCDC 1px
+}
+
+.incrementButton {
+  color: black;
+  font-size: small;
+  margin: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-bottom: solid #DCDCDC 1px
+}
+
+
+.decrementButton {
+  border: none;
+  color: black;
+  font-size: small;
+  transform: rotate(180deg);
+  margin: 0;
+  padding-left: 10px;
+  padding-right: 10px
+}
+
+
+/* Header */

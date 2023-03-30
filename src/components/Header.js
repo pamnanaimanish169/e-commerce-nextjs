@@ -21,16 +21,7 @@ const Header = () => {
 
     const handleCheckout = () => {
         event.preventDefault();
-        fetch('/api/checkout_sessions', { method: 'POST', body: JSON.stringify({ cartList }) }).then((res) => res.json()).then((data) => router.push(data?.url)).catch((err) => console.log('err', err))
-    }
-
-    function myFunction() {
-        var x = document.getElementById("myTopnav");
-        if (x.className === "topnav") {
-            x.className += " responsive";
-        } else {
-            x.className = "topnav";
-        }
+        fetch('/api/checkout_sessions', { method: 'POST', body: JSON.stringify({ cartList }) }).then((res) => res.json()).then((data) => router.push(data?.url)).catch((err) => console.error('err', err))
     }
 
     function handleIncrement(item) {
@@ -38,8 +29,6 @@ const Header = () => {
     }
 
     function handleDecrement(item) {
-        console.log('item', item?.amount - 1);
-
         if (item?.amount - 1 === 0) {
             dispatch({ type: "remove", payload: item });
         } else {
@@ -60,10 +49,6 @@ const Header = () => {
         }
     }
 
-    function handleDropdown() {
-        document.getElementById("myDropdown").classList.toggle("show");
-    }
-
     function getTotal() {
         cartList && cartList?.length > 0 && cartList?.map((element) => {
             price += element?.amount * element?.price;
@@ -73,7 +58,6 @@ const Header = () => {
     }
 
     let navbar = document.getElementById("navbar");
-
     let sticky = navbar?.offsetTop;
 
     // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
@@ -89,7 +73,7 @@ const Header = () => {
         <>
             {/* <!-- Header --> */}
             <div>
-                <div className={styles.topnav} id="myTopnav">
+                <div className={styles.topnav}>
                     <div className={styles.topnavWrapper}>
                         <div>
                             <img onClick={() => router.push('/')} src="../logo.svg" alt="logo" />
@@ -100,111 +84,29 @@ const Header = () => {
                                     cartList.length > 0 &&
                                     <div className={styles.dropdown}>
                                         <button onClick={handleToggle} className={styles.dropbtn}>{cartList?.length}</button>
-                                        <div style={{
-                                            display: `${show}`,
-                                            position: "fixed",
-                                            top: "60px",
-                                            right: "-10px",
-                                            background: "white",
-                                            borderRadius : "10px",
-                                            boxShadow : "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
-                                        }} className={`styles.dropdownContent ${stickyClass === 'sticky' ? styles?.sticky : ''}`}
-                                            id="navbar"
-                                        >
-                                            <ul
-                                                style={{
-                                                    position: "relative",
-                                                    overflow: "auto",
-                                                    height: "290px",
-                                                    paddingLeft: "0px"
-                                                }}
-                                                id="cartList"
-                                            >
+                                        <div style={{display: `${show}`}} className={`${styles.dropdownContent} ${stickyClass === 'sticky' ? styles?.sticky : ''}`}>
+                                            <ul className={styles.cartListWrapper}>
                                                 {
                                                     cartList && cartList?.length > 0 && cartList.map((item) => (
                                                         <li key={item?.id}>
-                                                            <a href='#' style={{ display: 'flex', width: "-webkit-fill-available", justifyContent: "space-between" }}>
-                                                                <div
-                                                                    style={{
-                                                                        display: "flex",
-                                                                        justifyContent: "space-between",
-                                                                    }}
-                                                                >
-                                                                    <div><img src={item?.thumbnail} style={{
-                                                                        width: "75px",
-                                                                        fontFamily: "Poppins",
-                                                                        verticalAlign: "middle",
-                                                                        display: "table-cell",
-                                                                        height: "60px",
-                                                                        objectFit: "cover",
-                                                                        marginRight: "20px",
-                                                                        borderRradius: "10px"
-                                                                    }} /></div>
+                                                            <a className={`d-flex justify-content-between ${styles.fillAvailable}`}>
+                                                                <div className='d-flex justify-content-between'>
+                                                                    <div><img src={item?.thumbnail} className={styles.itemThumbnail}/></div>
 
-                                                                    <div style={{
-                                                                        fontFamily: 'Poppins',
-                                                                        paddingRight: "5px"
-                                                                    }}>
+                                                                    <div className='px-2'>
                                                                         <div>{item?.title.slice(0, 20)}</div>
-                                                                        <div
-                                                                            style={{
-                                                                                color: 'grey'
-                                                                            }}
-                                                                        >{'₹' + item?.price * item?.amount}</div>
+                                                                        <div className={styles?.itemPrice}>{'₹' + item?.price * item?.amount}</div>
                                                                     </div>
                                                                 </div>
 
-                                                                <div style={{
-                                                                    display: "flex",
-                                                                    flexDirection: "row",
-                                                                    border: "solid #DCDCDC 1px"
-                                                                }}>
-                                                                    <div><p
-                                                                        style={{
-                                                                            fontFamily: 'Poppins',
-                                                                            paddingLeft: "5px",
-                                                                            paddingRight: "5px",
-                                                                            display: "table-cell",
-                                                                            verticalAlign: "middle",
-                                                                            height: "50px"
-                                                                        }}
-                                                                    >{item?.amount}</p></div>
-                                                                    <div
-                                                                        style={{
-                                                                            display: "flex",
-                                                                            flexDirection: "column",
-                                                                            justifyContent: 'center',
-                                                                            borderLeft: "solid #DCDCDC 1px"
-                                                                        }}
-                                                                    >
-                                                                        <p
-                                                                            style={{
-                                                                                border: "none",
-                                                                                color: "black",
-                                                                                fontSize: "small",
-                                                                                margin: "0",
-                                                                                paddingLeft: "10px",
-                                                                                paddingRight: "10px",
-                                                                                borderBottom: "solid #DCDCDC 1px"
-                                                                            }}
-                                                                            onClick={() => handleIncrement(item)}>^</p>
-
-                                                                        <p
-                                                                            style={{
-                                                                                border: "none",
-                                                                                color: "black",
-                                                                                fontSize: "small",
-                                                                                transform: 'rotate(180deg)',
-                                                                                margin: "0",
-                                                                                paddingLeft: "10px",
-                                                                                paddingRight: "10px"
-                                                                            }}
-                                                                            onClick={() => handleDecrement(item)}>^</p>
+                                                                <div className={`d-flex flex-row ${styles.amountWrapper}`}>
+                                                                    <div><p className={styles.amount}>{item?.amount}</p></div>
+                                                                    <div className={`d-flex flex-column justify-content-center ${styles.incrementWrapper}`}>
+                                                                        <p className={styles.incrementButton} onClick={() => handleIncrement(item)}>^</p>
+                                                                        <p className={styles.decrementButton} onClick={() => handleDecrement(item)}>^</p>
                                                                     </div>
                                                                 </div>
-                                                                <div className='m-2' style={{
-                                                                    fontFamily: 'Poppins'
-                                                                }} onClick={() => handleOnRemove(item)}><p> <img src="../delete.png" /> </p></div>
+                                                                <div className='m-2' onClick={() => handleOnRemove(item)}><p> <img src="../delete.png" /> </p></div>
                                                             </a>
                                                         </li>
                                                     ))
@@ -212,24 +114,11 @@ const Header = () => {
                                             </ul>
 
                                             <div className={styles.totalWrapper}>
-                                                <div style={{
-                                                    paddingTop: "10px",
-                                                    fontFamily: 'Poppins'
-                                                }}><b>Total {'₹' + getTotal()}</b></div>
+                                                <div className={styles.totalContent}><b>Total {'₹' + getTotal()}</b></div>
                                                 {/* Checkout */}
                                                 <div>
                                                     <button
-                                                        style={{
-                                                            background: "black",
-                                                            color: "white",
-                                                            border: "none",
-                                                            borderRadius: "10px",
-                                                            paddingLeft: "15px",
-                                                            paddingRight: "15px",
-                                                            paddingTop: "10px",
-                                                            paddingBottom: "10px",
-                                                            fontFamily: 'Poppins',
-                                                        }}
+                                                        className={styles.handleCheckoutBtn}
                                                         type="submit" role="link" onClick={handleCheckout}>
                                                         Checkout
                                                     </button>

@@ -1,31 +1,16 @@
 import { useRouter } from "next/router";
 import React from "react";
+import styles from "../styles/Home.module.css";
 
 const Custom404 = () => {
     const router = useRouter();
 
     return (
-        <div className="container" style={{
-            margin: "0",
-            position: "fixed",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            textAlign : 'center'
-        }}>
+        <div className={styles?.NotFoundContainer}>
             <h1>
                 404 - Page Not Found
             </h1>
-            <button
-                style={{
-                    background: "black",
-                    color: "white",
-                    borderRadius: "10px",
-                    border: "none",
-                    padding: "10px"
-                }}
-                onClick={() => router.push('../')}
-            >Back to Home</button>
+            <button className={styles.backToHomeBtn} onClick={() => router.push('../')}>Back to Home</button>
         </div>
     )
 }
