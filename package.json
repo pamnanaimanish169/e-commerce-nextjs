@@ -9,8 +9,23 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "13.2.4",
+    "@mailchimp/mailchimp_marketing": "^3.0.80",
+    "@nextui-org/react": "^1.0.0-beta.12",
+    "@reduxjs/toolkit": "^1.9.3",
+    "@stripe/react-stripe-js": "^2.0.0",
+    "@stripe/stripe-js": "^1.50.0",
+    "bootstrap": "^5.2.3",
+    "next": "^13.2.4",
+    "next-redux-wrapper": "^8.1.0",
+    "paytmchecksum": "^1.5.0",
+    "popper.js": "^1.16.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-bootstrap": "^2.7.2",
+    "react-dom": "18.2.0",
+    "react-redux": "^8.0.5",
+    "redux": "^4.2.1",
+    "redux-persist": "^6.0.0",
+    "save": "^2.9.0",
+    "stripe": "^11.15.0"
   }
 }

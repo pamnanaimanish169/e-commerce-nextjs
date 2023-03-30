@@ -1,38 +1,100 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 22-03-2023
 
-## Getting Started
+- Integrate stripe payment gateway
+- Fix the following issues:
+  - Fix Shop now URL
+  - Fix product detail URLs from http://localhost:3000/productListing/laptops & http://localhost:3000/productListing/all
+  - Fix the console errors:
+  - Fix design for http://localhost:3000/productDetails/7
+  - Fix CSS for http://localhost:3000/productListing/all & http://localhost:3000/productListing/laptops(make all images of same size)
+  - Fix CSS for home page(make all images of same size with border radius)
+  - Fix the redirection bug from http://localhost:3000/productListing/all & http://localhost:3000/productListing/laptops
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+# 23-03-2023
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Fix header logo in productDetails & productListing
+- Fix footer images in productDetails & productListing
+- Fix color of the links in footer
+- Make the Social links dyanimc
+- Make the Product link dynamic
+- Remove the DOWNLOAD APP & GET THE VOUCHER! section
+- Fix the styling of Add your email here input & the subsequent button
+- Implement routing on SHOP NOW button (Banner section)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+# 24-03-2023
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- Fix the dropdown Styling
+- Make the dropdown stick to top if the user scrolls
+- Make it more intuituve
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+https://dribbble.com/shots/3815376-Shopping-Cart-Dropdown
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+# 25-03-2023
 
-## Learn More
+- Show the dropdown only when the cart length is greater than zero
+- Fix the footer position(to the bottom) & make the productWrapper div more center to the screen
+- If the item count is 0 then the item should not show in cart
+- Implement a 404 page
 
-To learn more about Next.js, take a look at the following resources:
+# 27-03-2023
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Implemetn success & fail page for payments
+- Implement loader on success & fail page for payments
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+# 28-03-2023
 
-## Deploy on Vercel
+- Implement mailchimp newsletter API
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# 29-03-2023
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Remove mailchimp API & Implement sendinblue newsletter API
+- Remove Inline styles for success.js & failure.js
+- Remove products.json
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Inspirations
+
+https://dribbble.com/shots/18427546-My-Cart-Dropdown-for-Tokopackedi
+
+Extra code:
+
+
+{/* <!-- Vouchers --> */}
+            {/* <div className={styles.vouchers}>
+          <div>
+            <img src="./match-your-style.svg" alt="banner" className={styles.heroImage} />
+          </div>
+          <div className={styles.bannerContent}>
+            <p className={styles.voucherHeading}>
+              PAYDAY SALE NOW
+            </p>
+            <p className={styles.bannerText}>
+              DOWNLOAD APP & GET THE VOUCHER!
+            </p>
+            <p className={styles.bannerText}>
+              Get 30% off for first transaction using Rondovision mobile app for now.
+            </p>
+
+            <p className={styles.bannerText}>
+              <button style={{ background: "none", border: "none" }}>
+                <img src="./apple.svg" />
+              </button>
+              <button style={{ background: "none", border: "none" }}>
+                <img src="./apple.svg" />
+              </button>
+            </p>
+          </div>
+        </div> */}
+            {/* <!-- Vouchers --> */}
