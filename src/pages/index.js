@@ -156,29 +156,17 @@ export default function Home() {
             </div>
             {/* {/* <!-- Brands -->  */}
 
-            {/* <!-- New arrivals --> */}
-            <div className='row p-5'>
+            {/* <!-- New arrivals (Don't go for classes name) --> */}
+            <div className="row p-5">
               <div className={`py-5 ${styles.heading}`}>NEW ARRIVALS</div>
-              {
-                productList?.filter((element) => element?.category === 'laptops').map((element) => (
-                  <div className="col-md-12 col-lg-6 col-xl-6 col-xxl-4" key={element.title}>
-                    <div>
-                      <img src={element?.thumbnail} alt="arrivals" className={styles.arrivalsThumbnail} />
-                      <div className='d-flex justify-content-between'>
-                        <div>
-                          <div className={styles.arrivalssubTitle}>
-                            LAPTOPS & PC
-                          </div>
-                          <div className={styles.arrivalssubTitle}>
-                            Explore Now!
-                          </div>
-                        </div>
-                        <img src="./arrow-1.svg" alt="arrow" onClick={() => navigateTo('laptops')} />
-                      </div>
-                    </div>
+              {productList?.filter((element) => element?.category === 'laptops').map((element) => (
+                <div key={element.id} className="col-xs-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6" onClick={() => navigateTo(element.category)}>
+                  <div className={`my-4 ${styles.arrivals}`} >
+                    <img src={element?.thumbnail} alt="arrivals" className={styles.favouriteThumbnail} />
+                    <div className={styles.favouriteTitle}>{element?.title}</div>
                   </div>
-                ))
-              }
+                </div>
+              ))}
             </div>
             {/* <!-- New arrivals --> */}
 
@@ -216,7 +204,7 @@ export default function Home() {
               <div className={`py-5 ${styles.heading}`}>Young’s Favourite</div>
               {productList?.filter((element) => element?.category === 'smartphones').map((element) => (
                 <div key={element.id} className="col-xs-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6" onClick={() => navigateTo(element.category)}>
-                  <div className= {`my-4 ${styles.arrivals}`} >
+                  <div className={`my-4 ${styles.arrivals}`} >
                     <img src={element?.thumbnail} alt="arrivals" className={styles.favouriteThumbnail} />
                     <div className={styles.favouriteTitle}>{element?.title}</div>
                   </div>

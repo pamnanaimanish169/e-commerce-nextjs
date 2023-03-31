@@ -121,6 +121,11 @@
     border-bottom-right-radius: 59px;
     width: 100%;
     height: auto;
+    padding-right: 0;
+  }
+
+  .shopNowWrapper, .heroSubHeading, .exploreHeading {
+    text-align: center !important;
   }
 
   .lets-explore {
@@ -301,7 +306,7 @@
 /* mobile & tablet */
 @media screen and (max-width: 768px) {
   .heroSection {
-    margin-top: 20px;
+    margin-top: 75px;
     margin-left: 15px;
     margin-right: 0px;
     background: #F4F6F5;
@@ -761,6 +766,7 @@
   width: 100%;
   border-radius: 50px;
   height: 400px;
+  object-fit: cover;
 }
 
 .bannerBtn {
