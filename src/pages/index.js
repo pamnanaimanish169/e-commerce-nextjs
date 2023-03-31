@@ -120,7 +120,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="col-md-12 col-lg-6 col-xl-6 heroContainer">
-                    <img src="./smartphones.png" alt="hero-image" className={styles.heroImage} />
+                    <img src="./iPhone.svg" alt="hero-image" className={styles.heroImage} />
                   </div>
 
                 </div>
@@ -169,35 +169,6 @@ export default function Home() {
               ))}
             </div>
             {/* <!-- New arrivals --> */}
-
-            {/* <!-- Banner --> */}
-            <div className={styles.banner}>
-              <div>
-                {/* hero-image */}
-                <img src="./hero-image-3.png" alt="banner" className={styles.heroImage} />
-              </div>
-              <div className={styles.bannerContent}>
-                <p className={styles.bannerHeading}>
-                  PAYDAY SALE NOW
-                </p>
-                <p className={styles.bannerText}>
-                  Spend minimal $100 get 30% off
-                  voucher code for your next purchase
-                </p>
-                <p className={styles.bannerText}>
-                  1 June - 10 June 2021
-                </p>
-
-                <p className={styles.bannerText}>
-                  *Terms & Conditions apply
-                </p>
-
-                <p className={styles.bannerText}>
-                  <button className={styles.bannerBtn} onClick={() => navigateTo('../productListing/all')}>SHOP NOW</button>
-                </p>
-              </div>
-            </div>
-            {/* <!-- Banner --> */}
 
             {/* <!-- Young’s Favourite --> */}
             <div className="row p-5">
