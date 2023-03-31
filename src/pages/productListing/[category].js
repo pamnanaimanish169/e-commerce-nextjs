@@ -25,7 +25,7 @@ const productListing = () => {
                 <div className='row'>
                     {
                         productList.map((element) => (
-                            <div className='col my-2' onClick={() => navigateToProduct(element?.id)}>
+                            <div key={element.id} className='col my-2' onClick={() => navigateToProduct(element?.id)}>
                                 <div className={styles.cardImgWrapper}>
                                     <img src={element?.thumbnail} className={styles.cardImgTop} alt={element?.title} />
                                     <div className="card-body">

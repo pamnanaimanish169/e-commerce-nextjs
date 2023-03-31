@@ -8,6 +8,10 @@
   color: #000000;
 }
 
+.arrivals:hover {
+  cursor: pointer;
+}
+
 .icon {
   position: "absolute";
   right: "0px";

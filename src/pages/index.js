@@ -130,26 +130,26 @@ export default function Home() {
 
             {/* <!-- Brands --> */}
             <div className={`d-flex justify-content-between ${styles.brands}`}>
-              <div className="m-5">
+              <div className="my-3">
                 <img src="./brand-1-bg-removed.png" alt="brand" />
               </div>
-              <div className="m-5">
-                <img src="./brand-1-bg-removed.png" alt="brand" />
-
-              </div>
-              <div className="m-5">
+              <div className="my-3">
                 <img src="./brand-1-bg-removed.png" alt="brand" />
 
               </div>
-              <div className="m-5">
+              <div className="my-3">
                 <img src="./brand-1-bg-removed.png" alt="brand" />
 
               </div>
-              <div className="m-5">
+              <div className="my-3">
                 <img src="./brand-1-bg-removed.png" alt="brand" />
 
               </div>
-              <div className="m-5">
+              <div className="my-3">
+                <img src="./brand-1-bg-removed.png" alt="brand" />
+
+              </div>
+              <div className="my-3">
                 <img src="./brand-1-bg-removed.png" alt="brand" />
 
               </div>
@@ -161,24 +161,22 @@ export default function Home() {
               <div className={`py-5 ${styles.heading}`}>NEW ARRIVALS</div>
               {
                 productList?.filter((element) => element?.category === 'laptops').map((element) => (
-                  <>
-                    <div className="col-md-12 col-lg-6 col-xl-6 col-xxl-4">
-                      <div>
-                        <img src={element?.thumbnail} alt="arrivals" className={styles.arrivalsThumbnail} />
-                        <div className='d-flex justify-content-between'>
-                          <div>
-                            <div className={styles.arrivalssubTitle}>
-                              LAPTOPS & PC
-                            </div>
-                            <div className={styles.arrivalssubTitle}>
-                              Explore Now!
-                            </div>
+                  <div className="col-md-12 col-lg-6 col-xl-6 col-xxl-4" key={element.title}>
+                    <div>
+                      <img src={element?.thumbnail} alt="arrivals" className={styles.arrivalsThumbnail} />
+                      <div className='d-flex justify-content-between'>
+                        <div>
+                          <div className={styles.arrivalssubTitle}>
+                            LAPTOPS & PC
                           </div>
-                          <img src="./arrow-1.svg" alt="arrow" onClick={() => navigateTo('laptops')} />
+                          <div className={styles.arrivalssubTitle}>
+                            Explore Now!
+                          </div>
                         </div>
+                        <img src="./arrow-1.svg" alt="arrow" onClick={() => navigateTo('laptops')} />
                       </div>
                     </div>
-                  </>
+                  </div>
                 ))
               }
             </div>
@@ -217,8 +215,8 @@ export default function Home() {
             <div className="row p-5">
               <div className={`py-5 ${styles.heading}`}>Young’s Favourite</div>
               {productList?.filter((element) => element?.category === 'smartphones').map((element) => (
-                <div className="col-xs-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
-                  <div className= {`m-4 ${styles.arrivals}`} >
+                <div key={element.id} className="col-xs-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6" onClick={() => navigateTo(element.category)}>
+                  <div className= {`my-4 ${styles.arrivals}`} >
                     <img src={element?.thumbnail} alt="arrivals" className={styles.favouriteThumbnail} />
                     <div className={styles.favouriteTitle}>{element?.title}</div>
                   </div>
@@ -234,7 +232,7 @@ export default function Home() {
                   <div className={`text-center ${styles.newsletterHeading}`}>JOIN SHOPPING COMMUNITY TO GET MONTHLY PROMO</div>
                   <div className={`m-2 p-2 text-center ${styles.newsletterSubHeading}`}>Type your email down below and be young wild generation</div>
                   <div className="m-2 p-2 text-center">
-                    <input type="search" placeholder="Add your email here" 
+                    <input type="search" placeholder="Add your email here"
                       value={email}
                       onChange={handleEmailOnChange}
                       className={styles.newsletterSubscriptionsInput}

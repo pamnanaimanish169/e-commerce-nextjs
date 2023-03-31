@@ -56,8 +56,10 @@ https://dribbble.com/shots/3815376-Shopping-Cart-Dropdown
 
 - Merge the code & upload to github
 - Clean up the 404, productListing(all), productListing(category), productDetails(id), Loader  , footer, Header.js pages
-- 
 
+# 31-03-2023
+
+- Clean up index.jsx
 
 
 

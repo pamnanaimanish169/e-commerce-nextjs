@@ -60,7 +60,7 @@ const Footer = () => {
                         </p>
 
                         <div>
-                            {socialMedia.map((element) => (<a href={element?.url} target={'_blank'}><img src={element?.image || defaultImage} className="mx-1" /></a>))}
+                            {socialMedia.map((element) => (<a key={element?.url} href={element?.url} target={'_blank'}><img src={element?.image || defaultImage} className="mx-1" /></a>))}
                         </div>
                     </div>
 
@@ -70,7 +70,7 @@ const Footer = () => {
                             <ul className={styles.footerLinksWrapper}>
                                 {
                                     products.map((element) => (
-                                        <li className={styles.listItem} onClick={() => navigateTo(element)}>{getTitleCase(element.replace(/[^a-zA-Z ]/g, " "))}</li>
+                                        <li key={element} className={styles.listItem} onClick={() => navigateTo(element)}>{getTitleCase(element.replace(/[^a-zA-Z ]/g, " "))}</li>
                                     ))
                                 }
                             </ul>
