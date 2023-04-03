@@ -62,6 +62,11 @@ https://dribbble.com/shots/3815376-Shopping-Cart-Dropdown
 - Clean up index.jsx
 
 
+# 03-04-2023
+
+- Implement Jumbotron on all Productlisting pages
+- Implement Hover animation on individual products(Productlisting pages).
+-  
 
 
 

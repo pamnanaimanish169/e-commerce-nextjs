@@ -57,7 +57,7 @@ export default function Home() {
     let options = {
       method: 'POST',
       headers: {
-        "api-key": "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"
+        "api-key": "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"
       },
       body: JSON.stringify({
         "sender": {
@@ -221,3 +221,5 @@ export default function Home() {
 
 
 // https://fakestoreapi.com/products
+
+// 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

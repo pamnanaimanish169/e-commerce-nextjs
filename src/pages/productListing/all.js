@@ -20,18 +20,29 @@ const productListing = () => {
         <div>
             <Header></Header>
 
+            <div className={styles.bannerImage}>
+                <div className={styles.bannerText}>All Products</div>
+            </div>
+
             <div className='container my-5'>
                 <div className='row'>
                     {
                         productList.map((element) => (
-                            <div key={element.id} className='col my-2' onClick={() => navigateToProduct(element?.id)}>
+                            <div key={element.id} className='col my-4' onClick={() => navigateToProduct(element?.id)}>
                                 <div className={styles.cardImgWrapper}>
                                     <img src={element?.thumbnail} className={styles.cardImgTop} alt={element?.title} />
-                                    <div className="card-body">
-                                        <h5 className="card-title">{element?.title.slice(0, 45)}</h5>
+                                    <div
+                                    className={styles.productTitle}
+                                     style={{
+                                        
+                                    }}>
+                                        {element?.title.slice(0, 45)}
+                                    </div>
+                                    {/* <div className="card-body">
+                                        <h5 className="card-title"> {element?.title.slice(0, 45)} </h5>
                                         <p className="card-text">{element?.description.slice(0, 131)}
                                         </p>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         ))
