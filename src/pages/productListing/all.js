@@ -31,18 +31,9 @@ const productListing = () => {
                             <div key={element.id} className='col my-4' onClick={() => navigateToProduct(element?.id)}>
                                 <div className={styles.cardImgWrapper}>
                                     <img src={element?.thumbnail} className={styles.cardImgTop} alt={element?.title} />
-                                    <div
-                                    className={styles.productTitle}
-                                     style={{
-                                        
-                                    }}>
+                                    <div className={styles.productTitle}>
                                         {element?.title.slice(0, 45)}
                                     </div>
-                                    {/* <div className="card-body">
-                                        <h5 className="card-title"> {element?.title.slice(0, 45)} </h5>
-                                        <p className="card-text">{element?.description.slice(0, 131)}
-                                        </p>
-                                    </div> */}
                                 </div>
                             </div>
                         ))
