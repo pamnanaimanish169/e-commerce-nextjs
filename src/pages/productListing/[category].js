@@ -14,16 +14,26 @@ const productListing = () => {
     }, [category])
 
     const navigateToProduct = (id) => {
-        router.push(`../productDetails/${id}`);
+        id && fetch(`https://dummyjson.com/products/${id}`, {}).then((res) => res.json())
+            .then((data) => {
+                // put a loader here
+                if (data.message && data.message.includes('not found')) {
+                    router.push('../404')
+                } else {
+                    data.images.forEach((element) => {
+                        images.push({ thumbnail : element, original : element });
+                    })
+                    localStorage.setItem("productData", JSON.stringify(images));
+                    router.push(`../productDetails/${id}`);
+                }
+            }).catch((error) => console.error('error in connecting', error));
     }
 
     return (
         <div>
             <Header></Header>
 
-            <div style={{
-                marginTop: "75px",
-            }}>
+            <div className={styles.productContainer}>
                 <div className={styles.bannerImage}>
                     <div className={styles.bannerText}>{category && category.toUpperCase()}</div>
                 </div>
