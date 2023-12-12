@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import Loader from '@/components/Loader';
 import { useDispatch } from 'react-redux';
 import HeroSection from '@/components/HeroSection';
+import ProductList from '@/components/ProductList';
 
 export default function Home() {
     let router = useRouter();
@@ -111,40 +112,15 @@ export default function Home() {
                     {/* <!-- Header --> */}
 
                     {/* <!-- Hero Section --> */}
-                    {/* <div className={styles.heroSection}>
-                        <div>
-                            <div className={`row ${styles.exploreRow}`}>
-                                <div className="col-md-12 col-lg-6 col-xl-6">
-                                    <div className="row">
-                                        <h1 className={styles.exploreHeading}>
-                                            LET'S EXPLORE UNIQUE GADGETS
-                                        </h1>
-                                    </div>
-                                    <div className={styles.heroSubHeading}>
-                                        Live for Influential and Innovative
-                                        fashion!
-                                    </div>
-                                    <div
-                                        className={`row ${styles?.shopNowWrapper}`}
-                                    >
-                                        <span className="col-xs-12 col-md-8 p-0 my-2">
-                                            <button
-                                                className={styles.shopNowBtn}
-                                                onClick={handleShopNow}
-                                            >
-                                                Shop Now
-                                            </button>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> */}
                     <HeroSection />
                     {/* <!-- Hero Section --> */}
 
                     {/* <!-- Brands --> */}
-                    <div
+                    <ProductList />
+                    {/* <!-- Brands --> */}
+
+                    {/* <!-- Brands --> */}
+                    {/* <div
                         className={`d-flex justify-content-between ${styles.brands}`}
                     >
                         <div className="my-3">
@@ -183,11 +159,11 @@ export default function Home() {
                                 alt="brand"
                             />
                         </div>
-                    </div>
+                    </div> */}
                     {/* {/* <!-- Brands -->  */}
 
                     {/* <!-- New arrivals (Don't go for classes name) --> */}
-                    <div className="row p-5">
+                    {/* <div className="row p-5">
                         <div className={`py-5 ${styles.heading}`}>
                             NEW ARRIVALS
                         </div>
@@ -203,7 +179,7 @@ export default function Home() {
                                 >
                                     <div className={`my-4 ${styles.arrivals}`}>
                                         <img
-                                            src={element?.thumbnail}
+                                            src="./macbook-pro.jpeg"
                                             alt="arrivals"
                                             className={
                                                 styles.favouriteThumbnail
@@ -215,11 +191,11 @@ export default function Home() {
                                     </div>
                                 </div>
                             ))}
-                    </div>
+                    </div> */}
                     {/* <!-- New arrivals --> */}
 
                     {/* <!-- Young’s Favourite --> */}
-                    <div className="row p-5">
+                    {/* <div className="row p-5">
                         <div className={`py-5 ${styles.heading}`}>
                             Young’s Favourite
                         </div>
@@ -247,7 +223,7 @@ export default function Home() {
                                     </div>
                                 </div>
                             ))}
-                    </div>
+                    </div> */}
                     {/* <!-- Young’s Favourite --> */}
 
                     {/* Newsletter */}

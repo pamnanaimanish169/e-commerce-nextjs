@@ -1,6 +1,8 @@
-import Header from './Header';
+import { useRouter } from 'next/router';
 
 const HeroSection = () => {
+    let router = useRouter();
+
     return (
         <div
             style={{
@@ -14,7 +16,7 @@ const HeroSection = () => {
         >
             <h1
                 style={{
-                    fontSize: '6rem',
+                    fontSize: '5rem',
                     fontWeight: 900,
                     marginTop: '1.25rem',
                     marginBottom: '1.25rem',
@@ -54,6 +56,7 @@ const HeroSection = () => {
                     marginTop: '1.25rem',
                     marginBottom: '1.25rem',
                 }}
+                onClick={() => router.push('/productListing/all')}
             >
                 Shop Now
             </button>
