@@ -6,31 +6,31 @@ const Footer = () => {
 
     const socialMedia = [
         {
-            image: "../social-network-1.svg",
-            url: "https://www.facebook.com/fashionhouse134/"
+            image: '../social-network-1.svg',
+            url: 'https://www.facebook.com/fashionhouse134/',
         },
         {
-            image: "../instagram.svg",
-            url: "https://www.instagram.com/modeblogg/?hl=en"
+            image: '../instagram.svg',
+            url: 'https://www.instagram.com/modeblogg/?hl=en',
         },
         {
-            image: "../twitter.svg",
-            url: "https://twitter.com/twitterfashion?lang=en"
-        }
+            image: '../twitter.svg',
+            url: 'https://twitter.com/twitterfashion?lang=en',
+        },
     ];
 
     const products = [
-        "fragrances",
-        "skincare",
-        "groceries",
-        "home-decoration",
-        "smartphones",
-        "laptops"
-    ]
+        'fragrances',
+        'skincare',
+        'groceries',
+        'home-decoration',
+        'smartphones',
+        'laptops',
+    ];
 
     const navigateTo = (category) => {
         router.push(`/productListing/${category}`);
-    }
+    };
 
     const defaultImage = '../defaultIcon.svg';
 
@@ -42,12 +42,11 @@ const Footer = () => {
             str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
         }
 
-        return str.join(' '); 
-    }
+        return str.join(' ');
+    };
     return (
         <>
-            {/* <!-- Footer --> */}
-            <footer className={styles.footer}>
+            {/* <footer className={styles.footer}>
                 <div className={`p-5 ${styles.footerWrapper}`}>
                     <div>
                         <span className={styles.footerSubtitle}>
@@ -77,10 +76,9 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-            </footer>
-            {/* <!-- Footer --> */}
+            </footer> */}
         </>
-    )
-}
+    );
+};
 
 export default Footer;

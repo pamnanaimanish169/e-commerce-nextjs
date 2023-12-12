@@ -1,3 +1,11 @@
+/* ProductList.js */
+
+.productList-heading {
+    font-weight: 900;
+    text-align: center;
+    margin: 1.25rem;
+}
+
 .flex-container {
     display: flex;
     flex-wrap: wrap;
@@ -92,3 +100,15 @@
         transform: translateY(-10px);
     }
 }
+/* ProductList.js */
+
+/* ProductDetails -> [id].js */
+.productDetail-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: baseline;
+    /* margin-left: 100px; */
+    /* margin-right: 100px; */
+}
+/* ProductDetails -> [id].js */
