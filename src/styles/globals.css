@@ -2,33 +2,93 @@
     display: flex;
     flex-wrap: wrap;
     margin: 1.25rem;
-  }
-  
-  .product-item {
+}
+
+.product-wrapper {
+    position: relative;
+    text-align: center;
+}
+
+.product-item {
     box-sizing: border-box;
     padding: 1.25rem;
-    
-  }
-  
-  /* Media query for screens between 320px and 767px */
-  @media (min-width: 320px) and (max-width: 767px) {
+}
+
+.image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3.125rem;
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out; /* Smooth hover transition */
+}
+
+.image-wrapper:hover {
+    transform: translateY(-5px); /* Bounce effect on hover */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 3.125rem;
+    background-color: rgba(0, 0, 0, 0.2); /* Light black overlay */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out; /* Smooth overlay transition */
+}
+
+.image-wrapper:hover .overlay {
+    opacity: 1; /* Show overlay on hover */
+}
+
+.product-image {
+    border-radius: '3.125rem';
+    width: '100%';
+}
+
+.image-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) /* Adding text shadow */;
+    /* You can adjust font size and other properties as needed */
+}
+
+/* Media query for screens between 320px and 767px */
+@media (min-width: 320px) and (max-width: 767px) {
     .product-item {
-      flex: 1 0 100% !important; /* One item per row for screens between 320px and 767px */
-      max-width: 100% !important;
+        flex: 1 0 100% !important; /* One item per row for screens between 320px and 767px */
+        max-width: 100% !important;
     }
-  }
-  
-  /* Media query for screens between 768px and 1023px */
-  @media (min-width: 768px) and (max-width: 1023px) {
+}
+
+/* Media query for screens between 768px and 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
     .product-item {
-      flex: 1 0 50% !important; /* Two items per row for screens between 768px and 1023px */
-      max-width: 50% !important;
+        flex: 1 0 50% !important; /* Two items per row for screens between 768px and 1023px */
+        max-width: 50% !important;
     }
-  }
-  
-  /* Default styles for screens larger than 1023px (1024px and above) */
-  .product-item {
+}
+
+/* Default styles for screens larger than 1023px (1024px and above) */
+.product-item {
     flex: 1 0 25%; /* Four items per row for screens larger than 1023px */
     max-width: 25%;
-  }
-  
+}
+
+/* Add keyframes for bounce animation */
+@keyframes bounce {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}

@@ -72,341 +72,131 @@ const ProductList = () => {
 
             <div className="flex-container">
                 <div className="product-item">
-                    <div
-                        style={{
-                            position: 'relative',
-                            textAlign: 'center',
-                        }}
-                    >
-                        <img
-                            src="./macbook-pro.jpeg"
-                            style={{
-                                borderRadius: '3.125rem',
-                                width: '100%',
-                            }}
-                        />
-
-                        <div
-                            style={{
-                                position: 'absolute',
-                                top: '50%',
-                                left: '50%',
-                                transform: 'translate(-50%, -50%)',
-                                color: 'white',
-                                fontWeight: 'bold',
-                                fontSize: '1.5rem',
-                                textShadow:
-                                    '2px 2px 4px rgba(0,0,0,0.5)' /* Adding text shadow */,
-                                /* You can adjust font size and other properties as needed */
-                            }}
-                        >
-                            Macbook Pro
+                    <div className="product-wrapper">
+                        <div className="image-wrapper">
+                            <div className="overlay"></div>
+                            <img
+                                src="./macbook-pro.jpeg"
+                                className="product-image"
+                            />
+                            <div className="image-text">Macbook Pro</div>
                         </div>
                     </div>
                 </div>
 
                 <div className="product-item">
-                    <div
-                        style={{
-                            position: 'relative',
-                            textAlign: 'center',
-                        }}
-                    >
-                        <img
-                            src="./macbook-pro.jpeg"
-                            style={{
-                                borderRadius: '3.125rem',
-                                width: '100%',
-                            }}
-                        />
-
-                        <div
-                            style={{
-                                position: 'absolute',
-                                top: '50%',
-                                left: '50%',
-                                transform: 'translate(-50%, -50%)',
-                                color: 'white',
-                                fontWeight: 'bold',
-                                fontSize: '1.5rem',
-                                textShadow:
-                                    '2px 2px 4px rgba(0,0,0,0.5)' /* Adding text shadow */,
-                                /* You can adjust font size and other properties as needed */
-                            }}
-                        >
-                            Macbook Pro
+                    <div className="product-wrapper">
+                        <div className="image-wrapper">
+                            <div className="overlay"></div>
+                            <img
+                                src="./macbook-pro.jpeg"
+                                className="product-image"
+                            />
+                            <div className="image-text">Macbook Pro</div>
                         </div>
                     </div>
                 </div>
 
                 <div className="product-item">
-                    <div
-                        style={{
-                            position: 'relative',
-                            textAlign: 'center',
-                        }}
-                    >
-                        <img
-                            src="./macbook-pro.jpeg"
-                            style={{
-                                borderRadius: '3.125rem',
-                                width: '100%',
-                            }}
-                        />
-
-                        <div
-                            style={{
-                                position: 'absolute',
-                                top: '50%',
-                                left: '50%',
-                                transform: 'translate(-50%, -50%)',
-                                color: 'white',
-                                fontWeight: 'bold',
-                                fontSize: '1.5rem',
-                                textShadow:
-                                    '2px 2px 4px rgba(0,0,0,0.5)' /* Adding text shadow */,
-                                /* You can adjust font size and other properties as needed */
-                            }}
-                        >
-                            Macbook Pro
+                    <div className="product-wrapper">
+                        <div className="image-wrapper">
+                            <div className="overlay"></div>
+                            <img
+                                src="./macbook-pro.jpeg"
+                                className="product-image"
+                            />
+                            <div className="image-text">Macbook Pro</div>
                         </div>
                     </div>
                 </div>
 
                 <div className="product-item">
-                    <div
-                        style={{
-                            position: 'relative',
-                            textAlign: 'center',
-                        }}
-                    >
-                        <img
-                            src="./macbook-pro.jpeg"
-                            style={{
-                                borderRadius: '3.125rem',
-                                width: '100%',
-                            }}
-                        />
-
-                        <div
-                            style={{
-                                position: 'absolute',
-                                top: '50%',
-                                left: '50%',
-                                transform: 'translate(-50%, -50%)',
-                                color: 'white',
-                                fontWeight: 'bold',
-                                fontSize: '1.5rem',
-                                textShadow:
-                                    '2px 2px 4px rgba(0,0,0,0.5)' /* Adding text shadow */,
-                                /* You can adjust font size and other properties as needed */
-                            }}
-                        >
-                            Macbook Pro
+                    <div className="product-wrapper">
+                        <div className="image-wrapper">
+                            <div className="overlay"></div>
+                            <img
+                                src="./macbook-pro.jpeg"
+                                className="product-image"
+                            />
+                            <div className="image-text">Macbook Pro</div>
                         </div>
                     </div>
                 </div>
 
                 <div className="product-item">
-                    <div
-                        style={{
-                            position: 'relative',
-                            textAlign: 'center',
-                        }}
-                    >
-                        <img
-                            src="./macbook-pro.jpeg"
-                            style={{
-                                borderRadius: '3.125rem',
-                                width: '100%',
-                            }}
-                        />
-
-                        <div
-                            style={{
-                                position: 'absolute',
-                                top: '50%',
-                                left: '50%',
-                                transform: 'translate(-50%, -50%)',
-                                color: 'white',
-                                fontWeight: 'bold',
-                                fontSize: '1.5rem',
-                                textShadow:
-                                    '2px 2px 4px rgba(0,0,0,0.5)' /* Adding text shadow */,
-                                /* You can adjust font size and other properties as needed */
-                            }}
-                        >
-                            Macbook Pro
+                    <div className="product-wrapper">
+                        <div className="image-wrapper">
+                            <div className="overlay"></div>
+                            <img
+                                src="./macbook-pro.jpeg"
+                                className="product-image"
+                            />
+                            <div className="image-text">Macbook Pro</div>
                         </div>
                     </div>
                 </div>
 
                 <div className="product-item">
-                    <div
-                        style={{
-                            position: 'relative',
-                            textAlign: 'center',
-                        }}
-                    >
-                        <img
-                            src="./macbook-pro.jpeg"
-                            style={{
-                                borderRadius: '3.125rem',
-                                width: '100%',
-                            }}
-                        />
-
-                        <div
-                            style={{
-                                position: 'absolute',
-                                top: '50%',
-                                left: '50%',
-                                transform: 'translate(-50%, -50%)',
-                                color: 'white',
-                                fontWeight: 'bold',
-                                fontSize: '1.5rem',
-                                textShadow:
-                                    '2px 2px 4px rgba(0,0,0,0.5)' /* Adding text shadow */,
-                                /* You can adjust font size and other properties as needed */
-                            }}
-                        >
-                            Macbook Pro
+                    <div className="product-wrapper">
+                        <div className="image-wrapper">
+                            <div className="overlay"></div>
+                            <img
+                                src="./macbook-pro.jpeg"
+                                className="product-image"
+                            />
+                            <div className="image-text">Macbook Pro</div>
                         </div>
                     </div>
                 </div>
 
                 <div className="product-item">
-                    <div
-                        style={{
-                            position: 'relative',
-                            textAlign: 'center',
-                        }}
-                    >
-                        <img
-                            src="./macbook-pro.jpeg"
-                            style={{
-                                borderRadius: '3.125rem',
-                                width: '100%',
-                            }}
-                        />
-
-                        <div
-                            style={{
-                                position: 'absolute',
-                                top: '50%',
-                                left: '50%',
-                                transform: 'translate(-50%, -50%)',
-                                color: 'white',
-                                fontWeight: 'bold',
-                                fontSize: '1.5rem',
-                                textShadow:
-                                    '2px 2px 4px rgba(0,0,0,0.5)' /* Adding text shadow */,
-                                /* You can adjust font size and other properties as needed */
-                            }}
-                        >
-                            Macbook Pro
+                    <div className="product-wrapper">
+                        <div className="image-wrapper">
+                            <div className="overlay"></div>
+                            <img
+                                src="./macbook-pro.jpeg"
+                                className="product-image"
+                            />
+                            <div className="image-text">Macbook Pro</div>
                         </div>
                     </div>
                 </div>
 
                 <div className="product-item">
-                    <div
-                        style={{
-                            position: 'relative',
-                            textAlign: 'center',
-                        }}
-                    >
-                        <img
-                            src="./macbook-pro.jpeg"
-                            style={{
-                                borderRadius: '3.125rem',
-                                width: '100%',
-                            }}
-                        />
-
-                        <div
-                            style={{
-                                position: 'absolute',
-                                top: '50%',
-                                left: '50%',
-                                transform: 'translate(-50%, -50%)',
-                                color: 'white',
-                                fontWeight: 'bold',
-                                fontSize: '1.5rem',
-                                textShadow:
-                                    '2px 2px 4px rgba(0,0,0,0.5)' /* Adding text shadow */,
-                                /* You can adjust font size and other properties as needed */
-                            }}
-                        >
-                            Macbook Pro
+                    <div className="product-wrapper">
+                        <div className="image-wrapper">
+                            <div className="overlay"></div>
+                            <img
+                                src="./macbook-pro.jpeg"
+                                className="product-image"
+                            />
+                            <div className="image-text">Macbook Pro</div>
                         </div>
                     </div>
                 </div>
 
                 <div className="product-item">
-                    <div
-                        style={{
-                            position: 'relative',
-                            textAlign: 'center',
-                        }}
-                    >
-                        <img
-                            src="./macbook-pro.jpeg"
-                            style={{
-                                borderRadius: '3.125rem',
-                                width: '100%',
-                            }}
-                        />
-
-                        <div
-                            style={{
-                                position: 'absolute',
-                                top: '50%',
-                                left: '50%',
-                                transform: 'translate(-50%, -50%)',
-                                color: 'white',
-                                fontWeight: 'bold',
-                                fontSize: '1.5rem',
-                                textShadow:
-                                    '2px 2px 4px rgba(0,0,0,0.5)' /* Adding text shadow */,
-                                /* You can adjust font size and other properties as needed */
-                            }}
-                        >
-                            Macbook Pro
+                    <div className="product-wrapper">
+                        <div className="image-wrapper">
+                            <div className="overlay"></div>
+                            <img
+                                src="./macbook-pro.jpeg"
+                                className="product-image"
+                            />
+                            <div className="image-text">Macbook Pro</div>
                         </div>
                     </div>
                 </div>
 
                 <div className="product-item">
-                    <div
-                        style={{
-                            position: 'relative',
-                            textAlign: 'center',
-                        }}
-                    >
-                        <img
-                            src="./macbook-pro.jpeg"
-                            style={{
-                                borderRadius: '3.125rem',
-                                width: '100%',
-                            }}
-                        />
-
-                        <div
-                            style={{
-                                position: 'absolute',
-                                top: '50%',
-                                left: '50%',
-                                transform: 'translate(-50%, -50%)',
-                                color: 'white',
-                                fontWeight: 'bold',
-                                fontSize: '1.5rem',
-                                textShadow:
-                                    '2px 2px 4px rgba(0,0,0,0.5)' /* Adding text shadow */,
-                                /* You can adjust font size and other properties as needed */
-                            }}
-                        >
-                            Macbook Pro
+                    <div className="product-wrapper">
+                        <div className="image-wrapper">
+                            <div className="overlay"></div>
+                            <img
+                                src="./macbook-pro.jpeg"
+                                className="product-image"
+                            />
+                            <div className="image-text">Macbook Pro</div>
                         </div>
                     </div>
                 </div>
