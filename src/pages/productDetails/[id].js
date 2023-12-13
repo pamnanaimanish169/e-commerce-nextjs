@@ -5,7 +5,7 @@
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from '../../styles/Home.module.css';
 import {
@@ -43,25 +43,15 @@ const productDetails = () => {
         },
     ];
 
-    console.log(JSON.parse(localStorage.getItem('productData')), '++++++');
-
-    // const images = JSON.parse(localStorage.getItem('productData'));
-
-    useEffect(() => {
-        // Implement a loader here
-        id &&
-            fetch(`https://dummyjson.com/products/${id}`, {})
-                .then((res) => res.json())
-                .then((data) => {
-                    // put a loader here
-                    if (data.message && data.message.includes('not found')) {
-                        router.push('../404');
-                    } else {
-                        setProductData(data);
-                    }
-                })
-                .catch((error) => console.error('error in connecting', error));
-    }, [id]);
+    useLayoutEffect(() => {
+        const parent = document.querySelector('.productDetail-content');
+        setTimeout(() => {
+            // set a loader here(i.e. on page load and each refresh)
+            const element = document.querySelector('.image-gallery-image');
+            parent.style.height = `${element.clientHeight}px`;
+            console.log('here');
+        }, 2000);
+    }, []);
 
     const handleAddToCart = (item) => {
         if (cartList?.find((element) => item?.id === element?.id)) {
@@ -72,44 +62,6 @@ const productDetails = () => {
     };
 
     return (
-        // <>
-        //     {
-        //         !isLoading ?
-        //             <div>
-        //                 <Header></Header>
-
-        //                 <div className={`${styles.productWrapper}`}>
-
-        //                     <div className={styles.productDescription}>
-        //                         <h1>{productData?.title}</h1>
-        //                         <p>{productData?.description}</p>
-        //                         <div className="d-flex">
-        //                             <p className={styles.individualPrice}>₹{productData?.price}</p>
-        //                             <a className={styles.addToCart} onClick={() => handleAddToCart(productData)}>Add To Cart</a>
-        //                         </div>
-        //                     </div>
-
-        //                     {images && images.length > 0 && <div className={styles.carouselWrapper}>
-        //                         <ImageGallery
-        //                             items={images}
-        //                             showFullscreenButton={false}
-        //                             showPlayButton={false}
-        //                         ></ImageGallery>
-        //                     </div>}
-        //                     {
-        //                         console.log((images), 'images', typeof images)
-        //                     }
-        //                 </div>
-
-        //                 <div>
-        //                     <Footer></Footer>
-        //                 </div>
-
-        //             </div>
-        //             :
-        //             <Loader />
-        //     }
-        // </>
         <div
             style={{
                 marginTop: '100px',
@@ -122,22 +74,18 @@ const productDetails = () => {
                     </div>
                     <div className="productDetail-content col">
                         <h1>Macbook Pro</h1>
-                        <h2>
+                        <h4 className="productDetail-subheading">
                             The most advanced chips ever built for a personal
                             computer.
-                        </h2>
-                        <p>$ 123.12</p>
-                        <button>Add To Cart</button>
+                        </h4>
+                        <p>
+                            <b>$ 123.12</b>
+                        </p>
+                        <button id="addToCard-button">Add To Cart</button>
                     </div>
                 </div>
             </div>
         </div>
-        // <div className="container">
-        //     <div className="row">
-        //         <div className="col">1</div>
-        //         <div className="col">2</div>
-        //     </div>
-        // </div>
     );
 };
 
@@ -145,3 +93,4 @@ export default productDetails;
 
 // https://www.npmjs.com/package/react-image-gallery
 // https://www.freakyjolly.com/react-image-slider-with-thumbnail-example-using-react-image-slider-tutorial/
+// https://commercejs.com/docs - For backend

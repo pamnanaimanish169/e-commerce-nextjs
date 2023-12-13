@@ -26,7 +26,7 @@
     position: relative;
     overflow: hidden;
     border-radius: 3.125rem;
-    margin: 10px;
+    margin: 0.625rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease-in-out; /* Smooth hover transition */
 }
@@ -108,7 +108,25 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: baseline;
-    /* margin-left: 100px; */
-    /* margin-right: 100px; */
 }
+
+.productDetail-subheading {
+    font-size: medium;
+    font-weight: 300;
+}
+
+#addToCard-button {
+    background: black;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    padding: 0.625rem;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .productDetail-content {
+        margin-top: 1.25rem !important;
+    }
+}
+
 /* ProductDetails -> [id].js */
