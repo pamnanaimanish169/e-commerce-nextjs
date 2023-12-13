@@ -1,23 +1,10 @@
-// https://www.npmjs.com/package/pure-react-carousel
-// https://medium.com/tinyso/how-to-create-the-responsive-and-swipeable-carousel-slider-component-in-react-99f433364aa0
-// https://express-labs.github.io/pure-react-carousel/
-
-import Footer from '@/components/Footer';
-import Header from '@/components/Header';
 import { useRouter } from 'next/router';
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import styles from '../../styles/Home.module.css';
-import {
-    CarouselProvider,
-    Slider,
-    Slide,
-    ButtonBack,
-    ButtonNext,
-} from 'pure-react-carousel';
-import AliceCarousel from 'react-alice-carousel';
 import ImageGallery from 'react-image-gallery';
-import Loader from '@/components/Loader';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+// import Header from '@/components/Header';
 
 const productDetails = () => {
     const router = useRouter();
@@ -43,7 +30,7 @@ const productDetails = () => {
         },
     ];
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         const parent = document.querySelector('.productDetail-content');
         setTimeout(() => {
             // set a loader here(i.e. on page load and each refresh)
@@ -62,35 +49,37 @@ const productDetails = () => {
     };
 
     return (
-        <div
-            style={{
-                marginTop: '100px',
-            }}
-        >
-            <div className="productDetail-parent container">
-                <div className="row">
-                    <div className="productDetail-image col">
-                        <ImageGallery items={images} />
-                    </div>
-                    <div className="productDetail-content col">
-                        <h1>Macbook Pro</h1>
-                        <h4 className="productDetail-subheading">
-                            The most advanced chips ever built for a personal
-                            computer.
-                        </h4>
-                        <p>
-                            <b>$ 123.12</b>
-                        </p>
-                        <button id="addToCard-button">Add To Cart</button>
+        <div>
+            <Header></Header>
+            <div
+                style={{
+                    marginTop: '100px',
+                }}
+            >
+                <div className="productDetail-parent container">
+                    <div className="row">
+                        <div className="productDetail-image col">
+                            <ImageGallery items={images} />
+                        </div>
+                        <div className="productDetail-content col">
+                            <h1>Macbook Pro</h1>
+                            <h4 className="productDetail-subheading">
+                                The most advanced chips ever built for a
+                                personal computer.
+                            </h4>
+                            <p>
+                                <b>$ 123.12</b>
+                            </p>
+                            <button id="addToCard-button">Add To Cart</button>
+                        </div>
                     </div>
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 };
 
 export default productDetails;
 
-// https://www.npmjs.com/package/react-image-gallery
-// https://www.freakyjolly.com/react-image-slider-with-thumbnail-example-using-react-image-slider-tutorial/
 // https://commercejs.com/docs - For backend

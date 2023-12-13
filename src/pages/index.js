@@ -107,7 +107,7 @@ export default function Home() {
         <>
             {!isLoading ? (
                 <div>
-                    {/* <Header></Header> */}
+                    <Header></Header>
 
                     <HeroSection />
                     <ProductList />
@@ -152,7 +152,7 @@ export default function Home() {
                         </div>
                     </div>
 
-                    {/* <Footer></Footer> */}
+                    <Footer></Footer>
                 </div>
             ) : (
                 <div>
