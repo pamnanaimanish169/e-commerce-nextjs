@@ -67,7 +67,7 @@ export default function Home() {
             method: 'POST',
             headers: {
                 'api-key':
-                    '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',
+                    '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',
             },
             body: JSON.stringify({
                 sender: {
@@ -86,7 +86,7 @@ export default function Home() {
         };
 
         // This is a type of transactinal email(one at a time)
-        fetch(`https://api.sendinblue.com/v3/smtp/email`, options)
+        fetch(`https://api.brevo.com/v3/smtp/email`, options)
             .then((res) => res.json())
             .then((data) => {
                 if (data?.messageId) {
@@ -171,4 +171,4 @@ export default function Home() {
 
 // https://fakestoreapi.com/products
 
-// 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
+// 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
