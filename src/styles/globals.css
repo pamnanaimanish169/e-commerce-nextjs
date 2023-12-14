@@ -1,3 +1,27 @@
+/* Loader.js */
+@keyframes egu6kZbeQl12_to__to {
+    0%,
+    33.333333%,
+    66.666667%,
+    to {
+        transform: translate(0.000368px, -0.000006px);
+    }
+    16.666667%,
+    50%,
+    83.333333% {
+        transform: translate(0.000368px, 6.212963px);
+    }
+}
+@keyframes egu6kZbeQl113_s_do {
+    0% {
+        stroke-dashoffset: 26.775;
+    }
+    to {
+        stroke-dashoffset: 157;
+    }
+}
+/* Loader.js */
+
 /* Header.js */
 header {
     position: sticky;

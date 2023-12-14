@@ -1,10 +1,19 @@
-import React from "react";
-import styles from "../styles/Home.module.css";
-
-const Loader = () => {
-    return (
-        <img className={styles.loader} src='../loading.gif' />
-    )
-}
-
+import * as React from 'react';
+const Loader = (props) => (
+    <div
+        style={{
+            height: '100vh',
+        }}
+    >
+        <img
+            src="/lego.gif"
+            style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%,-50%)',
+            }}
+        />
+    </div>
+);
 export default Loader;

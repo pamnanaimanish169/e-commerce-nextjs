@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ImageGallery from 'react-image-gallery';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Loader from '@/components/Loader';
 // import Header from '@/components/Header';
 
 const productDetails = () => {
@@ -11,9 +12,11 @@ const productDetails = () => {
     const { id } = router.query;
 
     const [productData, setProductData] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    const [isContentLoaded, setIsContentLoaded] = useState(false);
     const dispatch = useDispatch();
     const cartList = useSelector((state) => state?.cartList);
+    const [contentHeight, setContentHeight] = useState('auto'); // Set default height to 'auto'
 
     const images = [
         {
@@ -31,13 +34,18 @@ const productDetails = () => {
     ];
 
     useEffect(() => {
-        const parent = document.querySelector('.productDetail-content');
         setTimeout(() => {
-            // set a loader here(i.e. on page load and each refresh)
+            const parent = document.querySelector('.productDetail-content');
             const element = document.querySelector('.image-gallery-image');
-            parent.style.height = `${element.clientHeight}px`;
-            console.log('here');
-        }, 2000);
+            console.log(parent);
+            console.log(element);
+
+            if (parent && element) {
+                parent.style.height = `${element.clientHeight}px`;
+                setContentHeight(`${element.clientHeight}px`);
+                setIsContentLoaded(true);
+            }
+        }, 1000);
     }, []);
 
     const handleAddToCart = (item) => {
@@ -61,7 +69,14 @@ const productDetails = () => {
                         <div className="productDetail-image col">
                             <ImageGallery items={images} />
                         </div>
-                        <div className="productDetail-content col">
+                        <div
+                            className="productDetail-content col"
+                            style={{
+                                height: contentHeight,
+                                opacity: isContentLoaded ? 1 : 0,
+                                transition: 'opacity 0.3s ease-in-out',
+                            }}
+                        >
                             <h1>Macbook Pro</h1>
                             <h4 className="productDetail-subheading">
                                 The most advanced chips ever built for a
