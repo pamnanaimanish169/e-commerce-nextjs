@@ -29,4 +29,6 @@
 .newsletterWrapper {
     background: #e5c643;
     height: fit-content;
+    position: relative;
+    bottom: 1.5625rem;
 }

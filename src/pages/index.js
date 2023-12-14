@@ -113,7 +113,13 @@ export default function Home() {
                     <ProductList />
 
                     <div className={styles.newsletterWrapper}>
-                        <div className="container py-5">
+                        <div
+                            className="container"
+                            style={{
+                                paddingTop: '3rem',
+                                paddingBottom: '8rem',
+                            }}
+                        >
                             <div>
                                 <div
                                     className={`text-center ${styles.newsletterHeading}`}

@@ -7,6 +7,11 @@ header {
 
     box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
 }
+
+.logo {
+    width: 3.125rem;
+    padding: 0.625rem;
+}
 /* Header.js */
 
 /* HeroSection.js */
@@ -76,6 +81,12 @@ header {
 .product-item {
     box-sizing: border-box;
     padding: 1.25rem;
+    flex: 1 0 25%; /* Four items per row for screens larger than 1023px */
+    max-width: 25%;
+}
+
+.product-item:hover {
+    cursor: pointer;
 }
 
 .image-wrapper {
@@ -138,12 +149,6 @@ header {
         flex: 1 0 50% !important; /* Two items per row for screens between 768px and 1023px */
         max-width: 50% !important;
     }
-}
-
-/* Default styles for screens larger than 1023px (1024px and above) */
-.product-item {
-    flex: 1 0 25%; /* Four items per row for screens larger than 1023px */
-    max-width: 25%;
 }
 
 /* Add keyframes for bounce animation */

@@ -82,8 +82,9 @@ const Header = () => {
         <header>
             <Link href={'/'}>
                 <img
-                    src="/dress.png"
+                    src="/logo.png"
                     alt="logo"
+                    className="logo"
                 />
             </Link>
         </header>
