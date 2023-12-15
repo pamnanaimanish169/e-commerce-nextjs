@@ -1,13 +1,20 @@
+// Global styles
 import '@/styles/globals.css';
+
+// External library styles
 import 'bootstrap/dist/css/bootstrap.css';
+import 'pure-react-carousel/dist/react-carousel.es.css';
+import 'react-alice-carousel/lib/alice-carousel.css';
+import 'react-image-gallery/styles/css/image-gallery.css';
+
+// React and Redux related imports
+import { persistor, store } from '@/store/cart';
 import { useEffect } from 'react';
 import { Provider } from 'react-redux';
-import { store, persistor } from '@/store/cart';
-import { NextUIProvider } from '@nextui-org/react';
 import { PersistGate } from 'redux-persist/integration/react';
-import 'react-alice-carousel/lib/alice-carousel.css';
-import 'pure-react-carousel/dist/react-carousel.es.css';
-import 'react-image-gallery/styles/css/image-gallery.css';
+
+// UI related imports
+import { NextUIProvider } from '@nextui-org/react';
 
 export default function App({ Component }) {
     useEffect(() => {

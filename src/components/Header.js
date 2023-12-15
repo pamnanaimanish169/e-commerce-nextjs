@@ -1,9 +1,12 @@
-import { useDispatch, useSelector } from 'react-redux';
-import styles from '../styles/Home.module.css';
-import { useEffect, useState } from 'react';
+// Package imports
 import { loadStripe } from '@stripe/stripe-js';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+
+// Other imports within each section (alphabetically ordered)
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 // don't remove this(super improtant)
 const stripePromise = loadStripe(

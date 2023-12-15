@@ -1,5 +1,7 @@
+// Package imports
 import { useRouter } from "next/router";
-import React from "react"
+
+// Other imports
 import styles from "../styles/Home.module.css";
 
 const Success = () => {
@@ -18,7 +20,7 @@ const Success = () => {
                     onClick={() => router.push('/')}>Home</button>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Success;

@@ -1,5 +1,4 @@
-import * as React from 'react';
-const Loader = (props) => (
+const Loader = () => (
     <div
         style={{
             height: '100vh',

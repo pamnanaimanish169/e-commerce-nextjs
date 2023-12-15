@@ -1,34 +1,26 @@
-import styles from '../styles/Home.module.css';
-import { useRouter } from 'next/router';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+// Package imports
 import { useEffect, useState } from 'react';
-import Loader from '@/components/Loader';
-import { useDispatch } from 'react-redux';
+
+// Component imports
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
+import Loader from '@/components/Loader';
 import ProductList from '@/components/ProductList';
 
-export default function Home() {
-    let router = useRouter();
+// Other imports
+import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
+import styles from '../styles/Home.module.css';
 
+export default function Home() {
     const [productList, setProductList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
+
+    let router = useRouter();
     const dispatch = useDispatch();
-
-    const paymentStatusPromise = new Promise((resolve) => {
-        let path = '';
-        const query = new URLSearchParams(window.location.search);
-
-        if (query.get('success')) {
-            path = '/success';
-        } else if (query.get('canceled')) {
-            path = '/failure';
-        }
-
-        resolve(path);
-    });
 
     useEffect(() => {
         paymentStatusPromise.then((res) => {
@@ -49,6 +41,19 @@ export default function Home() {
                 console.error('err', err);
             });
     }, []);
+
+    const paymentStatusPromise = new Promise((resolve) => {
+        let path = '';
+        const query = new URLSearchParams(window.location.search);
+
+        if (query.get('success')) {
+            path = '/success';
+        } else if (query.get('canceled')) {
+            path = '/failure';
+        }
+
+        resolve(path);
+    });
 
     const navigateTo = (category) => {
         router.push(`/productListing/${category}`);
@@ -170,3 +175,5 @@ export default function Home() {
 }
 
 // https://fakestoreapi.com/products
+// https://www.typescriptlang.org/
+// https://tailwindcss.com/docs/guides/nextjs

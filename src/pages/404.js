@@ -1,5 +1,8 @@
-import { useRouter } from "next/router";
+// Package imports
 import React from "react";
+import { useRouter } from "next/router";
+
+// Other imports
 import styles from "../styles/Home.module.css";
 
 const Custom404 = () => {
@@ -12,7 +15,7 @@ const Custom404 = () => {
             </h1>
             <button className={styles.backToHomeBtn} onClick={() => router.push('../')}>Back to Home</button>
         </div>
-    )
-}
+    );
+};
 
 export default Custom404;

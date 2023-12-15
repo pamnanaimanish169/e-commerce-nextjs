@@ -1,5 +1,8 @@
+// Package imports
+import React from "react";
 import { useRouter } from "next/router";
-import React from "react"
+
+// Other imports
 import styles from "../styles/Home.module.css";
 
 const Failure = () => {
@@ -16,7 +19,7 @@ const Failure = () => {
                 <button className={styles?.homeButton} onClick={() => router.push('/')}>Home</button>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Failure;

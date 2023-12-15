@@ -1,6 +1,8 @@
+// Package imports
 import { createStore } from 'redux';
-import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
-import { persistStore, persistReducer } from 'redux-persist'
+import { persistReducer, persistStore } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+
 
 const initialState = {
     cartList: [],
@@ -69,13 +71,13 @@ const rootReducers = (state = initialState, action) => {
     }
 
     return state;
-}
+};
 
 const persistConfig = {
     key: 'root',
     storage
-}
-const persistedReducer = persistReducer(persistConfig, rootReducers)
+};
+const persistedReducer = persistReducer(persistConfig, rootReducers);
 
 export const store = createStore(persistedReducer);
 export const persistor = persistStore(store);

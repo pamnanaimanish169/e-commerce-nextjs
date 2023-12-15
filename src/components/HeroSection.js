@@ -82,7 +82,7 @@ const HeroSection = () => {
                             <a href="javscript:void(0)">
                                 No suggestions found...
                             </a>
-                        )}
+                    )}
                     {/* // If some results are returned related to the search term */}
                     {searchTerm.length > 0 &&
                         filteredSuggestions.length > 0 &&
@@ -93,10 +93,15 @@ const HeroSection = () => {
                             >
                                 {suggestion?.name}
                             </a>
-                        ))}
+                    ))}
                     {/* // If user is currently searching */}
                     {!isSearchCompleted && searchTerm.length > 0 && (
-                        <a href="javascript:void(0)">Loading...</a>
+                        <a href="javascript:void(0)">
+                            <img
+                                src="/rolling-loader.gif"
+                                width={32}
+                            />
+                        </a>
                     )}
                 </div>
             </div>

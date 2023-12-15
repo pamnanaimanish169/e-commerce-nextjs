@@ -1,20 +1,26 @@
+// Component imports
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+
+// External package imports
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+
+// Styles
 import styles from '../../styles/Home.module.css';
+
 
 const productListing = () => {
     const [productList, setProductList] = useState([]);
     const router = useRouter();
 
     useEffect(() => {
-        fetch('https://dummyjson.com/products', {}).then((res) => res.json()).then((data) => { setProductList(data?.products) }).catch((err) => { console.error('err', err) });
+        fetch('https://dummyjson.com/products', {}).then((res) => res.json()).then((data) => { setProductList(data?.products); }).catch((err) => { console.error('err', err); });
     }, []);
 
     const navigateToProduct = (id) => {
         router.push(`../productDetails/${id}`);
-    }
+    };
 
     return (
         <div>
@@ -43,7 +49,7 @@ const productListing = () => {
 
             <Footer></Footer>
         </div>
-    )
-}
+    );
+};
 
 export default productListing;

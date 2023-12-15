@@ -1,11 +1,15 @@
-import { useRouter } from 'next/router';
+// Package imports
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import ImageGallery from 'react-image-gallery';
-import Header from '@/components/Header';
+
+// Component imports
 import Footer from '@/components/Footer';
-import Loader from '@/components/Loader';
-// import Header from '@/components/Header';
+import Header from '@/components/Header';
+
+// Other imports
+import { useRouter } from 'next/router';
 
 const productDetails = () => {
     const router = useRouter();
