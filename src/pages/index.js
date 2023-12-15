@@ -67,7 +67,7 @@ export default function Home() {
             method: 'POST',
             headers: {
                 'api-key':
-                    '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',
+                    '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',
             },
             body: JSON.stringify({
                 sender: {
@@ -170,5 +170,3 @@ export default function Home() {
 }
 
 // https://fakestoreapi.com/products
-
-// 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

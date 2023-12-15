@@ -1,28 +1,6 @@
-/* Loader.js */
-@keyframes egu6kZbeQl12_to__to {
-    0%,
-    33.333333%,
-    66.666667%,
-    to {
-        transform: translate(0.000368px, -0.000006px);
-    }
-    16.666667%,
-    50%,
-    83.333333% {
-        transform: translate(0.000368px, 6.212963px);
-    }
-}
-@keyframes egu6kZbeQl113_s_do {
-    0% {
-        stroke-dashoffset: 26.775;
-    }
-    to {
-        stroke-dashoffset: 157;
-    }
-}
-/* Loader.js */
-
-/* Header.js */
+/* 
+    Header.js 
+*/
 header {
     position: sticky;
     top: 0;
@@ -36,9 +14,13 @@ header {
     width: 3.125rem;
     padding: 0.625rem;
 }
-/* Header.js */
+/* 
+    Header.js 
+*/
 
-/* HeroSection.js */
+/* 
+    HeroSection.js 
+*/
 .hero-section {
     background: #f4f6f5;
     text-align: center;
@@ -69,7 +51,6 @@ header {
     width: 50%;
     padding: 0.625rem;
     margin-top: 1.25rem;
-    margin-bottom: 1.25rem;
 }
 
 .hero-section button {
@@ -81,10 +62,52 @@ header {
     margin-top: 1.25rem;
     margin-bottom: 1.25rem;
 }
-/* HeroSection.js  */
 
-/* ProductList.js */
+/* 
+    Autocomplete Search 
+*/
+.dropdown {
+    display: inline-block;
+    position: relative;
+    width: 50%;
+}
 
+.dropdown-options {
+    position: absolute;
+    top: 0.3125rem;
+    overflow: auto;
+    background-color: #fff;
+    border-radius: 0.3125rem;
+    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);
+    width: 100%;
+}
+
+.dropdown:hover .dropdown-options {
+    display: block;
+}
+
+.dropdown-options a {
+    display: block;
+    color: #000000;
+    padding: 0.3125rem;
+    text-decoration: none;
+    padding: 1.25rem 2.5rem;
+}
+
+.dropdown-options a:hover {
+    color: #0a0a23;
+    background-color: #ddd;
+    border-radius: 0.3125rem;
+}
+/* Autocomplet Search */
+
+/* 
+    HeroSection.js  
+*/
+
+/* 
+    ProductList.js 
+*/
 .productList-heading {
     font-weight: 900;
     text-align: center;
@@ -185,9 +208,13 @@ header {
         transform: translateY(-10px);
     }
 }
-/* ProductList.js */
+/* 
+    ProductList.js 
+*/
 
-/* ProductDetails -> [id].js */
+/* 
+    ProductDetails -> [id].js 
+*/
 .productDetail-content {
     display: flex;
     flex-direction: column;
@@ -214,9 +241,14 @@ header {
     }
 }
 
-/* ProductDetails -> [id].js */
+/* 
+    ProductDetails -> [id].js 
+*/
 
-/* Footer.js */
+/* 
+    Footer.js 
+*/
+
 footer {
     position: fixed;
     width: 100%;
@@ -228,4 +260,6 @@ footer {
     text-align: center;
     padding: 1.25rem;
 }
-/* Footer.js */
+/* 
+    Footer.js 
+*/
