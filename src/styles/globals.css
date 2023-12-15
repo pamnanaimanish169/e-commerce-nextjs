@@ -1,19 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* 
     Header.js 
 */
 header {
-    position: sticky;
-    top: 0;
-    z-index: 9999;
-    background: white;
-
     box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
 }
 
-.logo {
-    width: 3.125rem;
-    padding: 0.625rem;
-}
 /* 
     Header.js 
 */
@@ -243,23 +238,4 @@ header {
 
 /* 
     ProductDetails -> [id].js 
-*/
-
-/* 
-    Footer.js 
-*/
-
-footer {
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    z-index: 9999;
-    background: black;
-    color: white;
-
-    text-align: center;
-    padding: 1.25rem;
-}
-/* 
-    Footer.js 
 */
