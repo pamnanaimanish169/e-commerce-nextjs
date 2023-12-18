@@ -6,7 +6,17 @@
     Header.js 
 */
 header {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    background: white;
+
     box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    width: 3.125rem;
+    padding: 0.625rem;
 }
 
 /* 
@@ -163,6 +173,10 @@ header {
 .product-image {
     border-radius: '3.125rem';
     width: '100%';
+    height: 15.625rem;
+    width: 100%;
+    max-width: 21.875rem;
+    object-fit: cover;
 }
 
 .image-text {
@@ -210,6 +224,11 @@ header {
 /* 
     ProductDetails -> [id].js 
 */
+
+.no-product-found {
+    text-align: center;
+}
+
 .productDetail-content {
     display: flex;
     flex-direction: column;
@@ -230,6 +249,18 @@ header {
     padding: 0.625rem;
 }
 
+.image-gallery-image {
+    width: 34.375rem;
+    height: 18.75rem;
+    object-fit: cover;
+}
+
+.image-gallery-thumbnail .image-gallery-thumbnail-image {
+    width: 15.625rem;
+    height: 3.125rem;
+    object-fit: cover;
+}
+
 @media (min-width: 320px) and (max-width: 767px) {
     .productDetail-content {
         margin-top: 1.25rem !important;
@@ -238,4 +269,24 @@ header {
 
 /* 
     ProductDetails -> [id].js 
+*/
+
+
+/* 
+    Footer.js 
+*/
+
+footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 9999;
+    background: black;
+    color: white;
+
+    text-align: center;
+    padding: 1.25rem;
+}
+/* 
+    Footer.js 
 */

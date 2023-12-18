@@ -18,6 +18,7 @@ const productDetails = () => {
     const [productData, setProductData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isContentLoaded, setIsContentLoaded] = useState(false);
+    const [singleProduct, setSingleProduct] = useState();
     const dispatch = useDispatch();
     const cartList = useSelector((state) => state?.cartList);
     const [contentHeight, setContentHeight] = useState('auto'); // Set default height to 'auto'
@@ -41,8 +42,6 @@ const productDetails = () => {
         setTimeout(() => {
             const parent = document.querySelector('.productDetail-content');
             const element = document.querySelector('.image-gallery-image');
-            console.log(parent);
-            console.log(element);
 
             if (parent && element) {
                 parent.style.height = `${element.clientHeight}px`;
@@ -50,7 +49,21 @@ const productDetails = () => {
                 setIsContentLoaded(true);
             }
         }, 1000);
+
+
     }, []);
+
+    useEffect(() => {
+        console.log(localStorage.getItem('gadgets'));
+        const allProducts = JSON.parse(localStorage.getItem('gadgets'));
+        console.log(allProducts);
+        console.log("🚀 ~ file: [id].js:58 ~ productDetails ~ id:", typeof id);
+
+        const singleProduct = allProducts.find((element) => element?.id === parseInt(id));
+
+        console.log(singleProduct, 'singleProduct');
+        setSingleProduct(singleProduct);
+    }, [id]);
 
     const handleAddToCart = (item) => {
         if (cartList?.find((element) => item?.id === element?.id)) {
@@ -68,10 +81,10 @@ const productDetails = () => {
                     marginTop: '100px',
                 }}
             >
-                <div className="productDetail-parent container">
+                {singleProduct ? <div className="productDetail-parent container" key={singleProduct?.id}>
                     <div className="row">
                         <div className="productDetail-image col">
-                            <ImageGallery items={images} />
+                            <ImageGallery items={singleProduct?.images} />
                         </div>
                         <div
                             className="productDetail-content col"
@@ -81,18 +94,17 @@ const productDetails = () => {
                                 transition: 'opacity 0.3s ease-in-out',
                             }}
                         >
-                            <h1>Macbook Pro</h1>
+                            <h1>{singleProduct?.name}</h1>
                             <h4 className="productDetail-subheading">
-                                The most advanced chips ever built for a
-                                personal computer.
+                                {singleProduct?.Description}
                             </h4>
                             <p>
-                                <b>$ 123.12</b>
+                                <b>$ {singleProduct?.price}</b>
                             </p>
                             <button id="addToCard-button">Add To Cart</button>
                         </div>
                     </div>
-                </div>
+                </div> : <div className="no-product-found"><b>No Product found with the mentioned id:{id}...</b></div>}
             </div>
             <Footer></Footer>
         </div>

@@ -23,6 +23,8 @@ export default function Home() {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        setProductList(JSON.parse(localStorage.getItem('gadgets')));
+        console.log(localStorage.getItem('gadgets'));
         paymentStatusPromise.then((res) => {
             router.push(res);
             if (res === '/success') {
@@ -32,14 +34,14 @@ export default function Home() {
                 setIsLoading(false);
             }, 1000);
         });
-        fetch('https://dummyjson.com/products', {})
-            .then((res) => res.json())
-            .then((data) => {
-                setProductList(data?.products);
-            })
-            .catch((err) => {
-                console.error('err', err);
-            });
+        // fetch('https://dummyjson.com/products', {})
+        //     .then((res) => res.json())
+        //     .then((data) => {
+        //         setProductList(data?.products);
+        //     })
+        //     .catch((err) => {
+        //         console.error('err', err);
+        //     });
     }, []);
 
     const paymentStatusPromise = new Promise((resolve) => {
@@ -115,7 +117,7 @@ export default function Home() {
                     <Header></Header>
 
                     <HeroSection />
-                    <ProductList />
+                    <ProductList productList={productList} />
 
                     <div className={styles.newsletterWrapper}>
                         <div

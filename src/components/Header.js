@@ -82,12 +82,12 @@ const Header = () => {
     };
 
     return (
-        <header className="sticky top-0 z-9999 bg-white">
+        <header className="sticky top-0 bg-white">
             <Link href={'/'}>
                 <img
                     src="/logo.png"
                     alt="logo"
-                    className="w-12 p-2"
+                    className="logo"
                 />
             </Link>
         </header>

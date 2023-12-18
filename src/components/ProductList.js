@@ -1,203 +1,32 @@
 import { useRouter } from 'next/router';
 
-const ProductList = () => {
+const ProductList = ({ productList }) => {
     const router = useRouter();
+    console.log(productList);
 
     return (
         <div>
             <h2 className="productList-heading">NEW ARRIVALS</h2>
 
             <div className="flex-container">
-                <div
-                    className="product-item"
-                    onClick={() => router.push('productDetails/1')}
-                >
-                    <div className="product-wrapper">
-                        <div className="image-wrapper">
-                            <div className="overlay"></div>
-                            <img
-                                src="./macbook-pro.jpeg"
-                                className="product-image"
-                            />
-                            <div className="image-text">Macbook Pro</div>
+                {productList.map((element, index) => (
+                    <div
+                        className="product-item"
+                        onClick={() => router.push(`productDetails/${element?.id}`)}
+                    >
+                        <div className="product-wrapper">
+                            <div className="image-wrapper">
+                                <div className="overlay"></div>
+                                <img
+                                    src={element?.images[0]?.original}
+                                    className="product-image"
+                                />
+                                {/* {console.log(element?.images[0]?.original, 'element=>')} */}
+                                <div className="image-text">{element?.name}</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div
-                    className="product-item"
-                    onClick={() => router.push('productDetails/1')}
-                >
-                    <div className="product-wrapper">
-                        <div className="image-wrapper">
-                            <div className="overlay"></div>
-                            <img
-                                src="./macbook-pro.jpeg"
-                                className="product-image"
-                            />
-                            <div className="image-text">Macbook Pro</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div
-                    className="product-item"
-                    onClick={() => router.push('productDetails/1')}
-                >
-                    <div className="product-wrapper">
-                        <div className="image-wrapper">
-                            <div className="overlay"></div>
-                            <img
-                                src="./macbook-pro.jpeg"
-                                className="product-image"
-                            />
-                            <div className="image-text">Macbook Pro</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div
-                    className="product-item"
-                    onClick={() => router.push('productDetails/1')}
-                >
-                    <div className="product-wrapper">
-                        <div className="image-wrapper">
-                            <div className="overlay"></div>
-                            <img
-                                src="./macbook-pro.jpeg"
-                                className="product-image"
-                            />
-                            <div className="image-text">Macbook Pro</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div
-                    className="product-item"
-                    onClick={() => router.push('productDetails/1')}
-                >
-                    <div className="product-wrapper">
-                        <div className="image-wrapper">
-                            <div className="overlay"></div>
-                            <img
-                                src="./macbook-pro.jpeg"
-                                className="product-image"
-                            />
-                            <div className="image-text">Macbook Pro</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div
-                    className="product-item"
-                    onClick={() => router.push('productDetails/1')}
-                >
-                    <div className="product-wrapper">
-                        <div className="image-wrapper">
-                            <div className="overlay"></div>
-                            <img
-                                src="./macbook-pro.jpeg"
-                                className="product-image"
-                            />
-                            <div className="image-text">Macbook Pro</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div
-                    className="product-item"
-                    onClick={() => router.push('productDetails/1')}
-                >
-                    <div className="product-wrapper">
-                        <div className="image-wrapper">
-                            <div className="overlay"></div>
-                            <img
-                                src="./macbook-pro.jpeg"
-                                className="product-image"
-                            />
-                            <div className="image-text">Macbook Pro</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div
-                    className="product-item"
-                    onClick={() => router.push('productDetails/1')}
-                >
-                    <div className="product-wrapper">
-                        <div className="image-wrapper">
-                            <div className="overlay"></div>
-                            <img
-                                src="./macbook-pro.jpeg"
-                                className="product-image"
-                            />
-                            <div className="image-text">Macbook Pro</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div
-                    className="product-item"
-                    onClick={() => router.push('productDetails/1')}
-                >
-                    <div className="product-wrapper">
-                        <div className="image-wrapper">
-                            <div className="overlay"></div>
-                            <img
-                                src="./macbook-pro.jpeg"
-                                className="product-image"
-                            />
-                            <div className="image-text">Macbook Pro</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div
-                    className="product-item"
-                    onClick={() => router.push('productDetails/1')}
-                >
-                    <div className="product-wrapper">
-                        <div className="image-wrapper">
-                            <div className="overlay"></div>
-                            <img
-                                src="./macbook-pro.jpeg"
-                                className="product-image"
-                            />
-                            <div className="image-text">Macbook Pro</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div
-                    className="product-item"
-                    onClick={() => router.push('productDetails/1')}
-                >
-                    <div className="product-wrapper">
-                        <div className="image-wrapper">
-                            <div className="overlay"></div>
-                            <img
-                                src="./macbook-pro.jpeg"
-                                className="product-image"
-                            />
-                            <div className="image-text">Macbook Pro</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div
-                    className="product-item"
-                    onClick={() => router.push('productDetails/1')}
-                >
-                    <div className="product-wrapper">
-                        <div className="image-wrapper">
-                            <div className="overlay"></div>
-                            <img
-                                src="./macbook-pro.jpeg"
-                                className="product-image"
-                            />
-                            <div className="image-text">Macbook Pro</div>
-                        </div>
-                    </div>
-                </div>
+                ))}
             </div>
         </div>
     );
