@@ -52,10 +52,19 @@ const productDetails = () => {
     }, [cartList]);
 
     const handleAddToCart = (item) => {
-        if (cartList?.find((element) => (element?.id) !== (singleProduct?.id))) {
-            const updatedCartList = [...(cartList || []), { ...singleProduct, quantity: 1 }];
-            console.log(updatedCartList);
+        if (!cartList) {
+            // If cartList is not defined (user adding item for the first time)
+            const updatedCartList = [{ ...singleProduct, quantity: 1 }];
             localStorage.setItem('cartList', JSON.stringify(updatedCartList));
+        } else {
+            const productExistsInCart = cartList.some((element) => element?.id === singleProduct?.id);
+
+            if (!productExistsInCart) {
+                // Product not in cart, add it with quantity 1
+                const updatedCartList = [...cartList, { ...singleProduct, quantity: 1 }];
+                localStorage.setItem('cartList', JSON.stringify(updatedCartList));
+            }
+            // Else: Product already in cart, do nothing (quantity remains unchanged)
         }
 
         setQuantityControlsVisible(true);
@@ -132,12 +141,12 @@ const productDetails = () => {
                             }}>
                                 <div className="quantity-controls">
                                     <button className="control-button" onClick={handleIncrement}>+</button>
-                                    <div className="quantity-display">{cartItem?.quantity}</div>
+                                    <div className="quantity-display">{cartItem?.quantity ? cartItem.quantity : '0'}</div>
                                     <button className="control-button" onClick={handleDecrement}>-</button>
                                 </div>
 
                                 <div className="total-price">
-                                    $ <b>{cartItem?.quantity * singleProduct?.price}</b>
+                                    $ <b>{cartItem?.quantity ? cartItem?.quantity * singleProduct?.price : '0'}</b>
                                 </div>
 
                             </div>
