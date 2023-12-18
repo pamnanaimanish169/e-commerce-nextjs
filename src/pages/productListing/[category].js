@@ -47,7 +47,7 @@ const productListing = () => {
                 <div className='container my-5'>
                     <div className='row'>
                         {
-                            productList.map((element) => (
+                            productList?.map((element) => (
                                 <div key={element.id} className='col my-2' onClick={() => navigateToProduct(element?.id)}>
                                     <div className={styles.cardImgWrapper}>
                                         <img src={element?.thumbnail} className={styles.cardImgTop} alt={element?.title} />

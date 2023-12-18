@@ -23,7 +23,13 @@ export default function Home() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        setProductList(JSON.parse(localStorage.getItem('gadgets')));
+        try {
+            setProductList(JSON.parse(localStorage.getItem('gadgets')));
+            // setIsLoading(false);
+        } catch (error) {
+            console.error('Error in fetching product details:', error);
+            setIsLoading(false);
+        }
         console.log(localStorage.getItem('gadgets'));
         paymentStatusPromise.then((res) => {
             router.push(res);
@@ -112,66 +118,60 @@ export default function Home() {
 
     return (
         <>
-            {!isLoading ? (
-                <div>
-                    <Header></Header>
+            <div>
+                <Header></Header>
 
-                    <HeroSection />
-                    <ProductList productList={productList} />
+                <HeroSection />
+                {isLoading ? <Loader /> : <ProductList productList={productList} />}
 
-                    <div className={styles.newsletterWrapper}>
-                        <div
-                            className="container"
-                            style={{
-                                paddingTop: '3rem',
-                                paddingBottom: '8rem',
-                            }}
-                        >
-                            <div>
-                                <div
-                                    className={`text-center ${styles.newsletterHeading}`}
+                <div className={styles.newsletterWrapper}>
+                    <div
+                        className="container"
+                        style={{
+                            paddingTop: '3rem',
+                            paddingBottom: '8rem',
+                        }}
+                    >
+                        <div>
+                            <div
+                                className={`text-center ${styles.newsletterHeading}`}
+                            >
+                                JOIN SHOPPING COMMUNITY TO GET MONTHLY PROMO
+                            </div>
+                            <div
+                                className={`m-2 p-2 text-center ${styles.newsletterSubHeading}`}
+                            >
+                                Type your email down below and be young wild
+                                generation
+                            </div>
+                            <div className="m-2 p-2 text-center">
+                                <input
+                                    type="search"
+                                    placeholder="Add your email here"
+                                    value={email}
+                                    onChange={handleEmailOnChange}
+                                    className={
+                                        styles.newsletterSubscriptionsInput
+                                    }
+                                />
+                                <button
+                                    className={
+                                        styles.newsletterSubscriptionsBtn
+                                    }
+                                    onClick={() =>
+                                        handleNewsletterSubscription(email)
+                                    }
                                 >
-                                    JOIN SHOPPING COMMUNITY TO GET MONTHLY PROMO
-                                </div>
-                                <div
-                                    className={`m-2 p-2 text-center ${styles.newsletterSubHeading}`}
-                                >
-                                    Type your email down below and be young wild
-                                    generation
-                                </div>
-                                <div className="m-2 p-2 text-center">
-                                    <input
-                                        type="search"
-                                        placeholder="Add your email here"
-                                        value={email}
-                                        onChange={handleEmailOnChange}
-                                        className={
-                                            styles.newsletterSubscriptionsInput
-                                        }
-                                    />
-                                    <button
-                                        className={
-                                            styles.newsletterSubscriptionsBtn
-                                        }
-                                        onClick={() =>
-                                            handleNewsletterSubscription(email)
-                                        }
-                                    >
-                                        Submit
-                                    </button>
-                                    <div>{message}</div>
-                                </div>
+                                    Submit
+                                </button>
+                                <div>{message}</div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <Footer></Footer>
-                </div>
-            ) : (
-                <div>
-                    <Loader />
-                </div>
-            )}
+                <Footer></Footer>
+            </div>
         </>
     );
 }

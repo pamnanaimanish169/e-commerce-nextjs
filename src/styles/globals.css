@@ -250,15 +250,31 @@ header {
 }
 
 .image-gallery-image {
-    width: 34.375rem;
-    height: 18.75rem;
-    object-fit: cover;
+    width: 34.375rem !important;
+    height: 18.75rem !important;
+    object-fit: cover !important;
 }
 
 .image-gallery-thumbnail .image-gallery-thumbnail-image {
-    width: 15.625rem;
-    height: 3.125rem;
+    width: 15.625rem !important;
+    height: 3.125rem !important;
     object-fit: cover;
+}
+
+.quantity-controls {
+    display: flex;
+    flex-direction: row;
+}
+
+.control-button {
+    background: black;
+    color: white;
+    padding: 0.625rem 0.9375rem;
+    border-radius: 0.3125rem;
+}
+
+.quantity-display, .total-price {
+    padding: 0.625rem 0.9375rem;
 }
 
 @media (min-width: 320px) and (max-width: 767px) {

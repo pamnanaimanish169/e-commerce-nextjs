@@ -20,23 +20,12 @@ const productDetails = () => {
     const [isContentLoaded, setIsContentLoaded] = useState(false);
     const [singleProduct, setSingleProduct] = useState();
     const dispatch = useDispatch();
-    const cartList = useSelector((state) => state?.cartList);
+    const [cartList, setCartList] = useState();
     const [contentHeight, setContentHeight] = useState('auto'); // Set default height to 'auto'
+    const [QuantityControlsVisible, setQuantityControlsVisible] = useState(false);
+    const cartItem = cartList?.find((element) => element?.id === parseInt(id));
 
-    const images = [
-        {
-            original: 'https://picsum.photos/id/1018/500/300/',
-            thumbnail: 'https://picsum.photos/id/1018/250/150/',
-        },
-        {
-            original: 'https://picsum.photos/id/1015/500/300/',
-            thumbnail: 'https://picsum.photos/id/1015/250/150/',
-        },
-        {
-            original: 'https://picsum.photos/id/1019/500/300/',
-            thumbnail: 'https://picsum.photos/id/1019/250/150/',
-        },
-    ];
+
 
     useEffect(() => {
         setTimeout(() => {
@@ -49,29 +38,64 @@ const productDetails = () => {
                 setIsContentLoaded(true);
             }
         }, 1000);
-
-
+        setCartList(JSON.parse(localStorage.getItem('cartList')));
     }, []);
 
     useEffect(() => {
-        console.log(localStorage.getItem('gadgets'));
         const allProducts = JSON.parse(localStorage.getItem('gadgets'));
-        console.log(allProducts);
-        console.log("🚀 ~ file: [id].js:58 ~ productDetails ~ id:", typeof id);
-
-        const singleProduct = allProducts.find((element) => element?.id === parseInt(id));
-
-        console.log(singleProduct, 'singleProduct');
+        const singleProduct = allProducts?.find((element) => element?.id === parseInt(id));
         setSingleProduct(singleProduct);
     }, [id]);
 
+    useEffect(() => {
+        console.log(singleProduct);
+    }, [cartList]);
+
     const handleAddToCart = (item) => {
-        if (cartList?.find((element) => item?.id === element?.id)) {
-            dispatch({ type: 'update', payload: item });
-        } else {
-            dispatch({ type: 'add', payload: item });
+        if (cartList?.find((element) => (element?.id) !== (singleProduct?.id))) {
+            const updatedCartList = [...(cartList || []), { ...singleProduct, quantity: 1 }];
+            console.log(updatedCartList);
+            localStorage.setItem('cartList', JSON.stringify(updatedCartList));
+        }
+
+        setQuantityControlsVisible(true);
+    };
+
+    const handleIncrement = () => {
+        // Retrieve the cartList from localStorage
+        const cartList = JSON.parse(localStorage.getItem('cartList'));
+
+        // Check if the cartList exists and the product with the given ID is in the list
+        if (cartList && cartList.some(item => item.id === singleProduct?.id)) {
+            // Increment the quantity of the product in cartList
+            const updatedCartList = cartList.map(item => {
+                if (item.id === singleProduct?.id) {
+                    return { ...item, quantity: item.quantity + 1 };
+                }
+                return item;
+            });
+
+            // Update the 'cartList' in localStorage with the updated cartList
+            localStorage.setItem('cartList', JSON.stringify(updatedCartList));
         }
     };
+
+    const handleDecrement = () => {
+        // Retrieve the cartList from localStorage
+        const cartList = JSON.parse(localStorage.getItem('cartList'));
+
+        if (cartList && cartList.some(item => item?.id === singleProduct?.id)) {
+            const updatedCartList = cartList.map(item => {
+                if (item?.id === singleProduct?.id) {
+                    return { ...item, quantity: item?.quantity - 1 };
+                }
+                return item;
+            });
+
+            localStorage.setItem('cartList', JSON.stringify(updatedCartList));
+        }
+    };
+
 
     return (
         <div>
@@ -84,7 +108,7 @@ const productDetails = () => {
                 {singleProduct ? <div className="productDetail-parent container" key={singleProduct?.id}>
                     <div className="row">
                         <div className="productDetail-image col">
-                            <ImageGallery items={singleProduct?.images} />
+                            <ImageGallery items={singleProduct?.images} showFullscreenButton={false} showPlayButton={false} />
                         </div>
                         <div
                             className="productDetail-content col"
@@ -101,7 +125,22 @@ const productDetails = () => {
                             <p>
                                 <b>$ {singleProduct?.price}</b>
                             </p>
-                            <button id="addToCard-button">Add To Cart</button>
+                            <button id="addToCard-button" onClick={(singleProduct) => handleAddToCart(singleProduct)}>Add To Cart</button>
+
+                            <div style={{
+                                display: QuantityControlsVisible ? 'flex' : 'none',
+                            }}>
+                                <div className="quantity-controls">
+                                    <button className="control-button" onClick={handleIncrement}>+</button>
+                                    <div className="quantity-display">{cartItem?.quantity}</div>
+                                    <button className="control-button" onClick={handleDecrement}>-</button>
+                                </div>
+
+                                <div className="total-price">
+                                    $ <b>{cartItem?.quantity * singleProduct?.price}</b>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div> : <div className="no-product-found"><b>No Product found with the mentioned id:{id}...</b></div>}

@@ -9,7 +9,7 @@ const ProductList = ({ productList }) => {
             <h2 className="productList-heading">NEW ARRIVALS</h2>
 
             <div className="flex-container">
-                {productList.map((element, index) => (
+                {productList?.map((element, index) => (
                     <div
                         className="product-item"
                         onClick={() => router.push(`productDetails/${element?.id}`)}
@@ -21,7 +21,6 @@ const ProductList = ({ productList }) => {
                                     src={element?.images[0]?.original}
                                     className="product-image"
                                 />
-                                {/* {console.log(element?.images[0]?.original, 'element=>')} */}
                                 <div className="image-text">{element?.name}</div>
                             </div>
                         </div>
