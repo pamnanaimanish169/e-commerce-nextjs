@@ -13,21 +13,24 @@ import { useRouter } from 'next/router';
 
 const productDetails = () => {
     const router = useRouter();
-    const { id } = router.query;
+    const { id } = router?.query;
 
-    const [productData, setProductData] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
     const [isContentLoaded, setIsContentLoaded] = useState(false);
-    const [singleProduct, setSingleProduct] = useState();
-    const dispatch = useDispatch();
-    const [cartList, setCartList] = useState();
     const [contentHeight, setContentHeight] = useState('auto'); // Set default height to 'auto'
-    const [QuantityControlsVisible, setQuantityControlsVisible] = useState(false);
-    const cartItem = cartList?.find((element) => element?.id === parseInt(id));
+    const [isQuantityControlsVisible, setIsQuantityControlsVisible] = useState(false);
 
-
+    const [cartItem, setCartItem] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+        loadProductDetails();
+    }, []);
+
+    useEffect(() => {
+        id && getCartItem();
+    }, [id]);
+
+    const loadProductDetails = () => {
         setTimeout(() => {
             const parent = document.querySelector('.productDetail-content');
             const element = document.querySelector('.image-gallery-image');
@@ -38,73 +41,75 @@ const productDetails = () => {
                 setIsContentLoaded(true);
             }
         }, 1000);
-        setCartList(JSON.parse(localStorage.getItem('cartList')));
-    }, []);
+    };
 
-    useEffect(() => {
-        const allProducts = JSON.parse(localStorage.getItem('gadgets'));
-        const singleProduct = allProducts?.find((element) => element?.id === parseInt(id));
-        setSingleProduct(singleProduct);
-    }, [id]);
+    const getCartItem = async () => {
+        try {
+            // If the cartList exists then extract the data from the cartList array
+            const cartList = JSON.parse(localStorage.getItem('cartList'));
 
-    useEffect(() => {
-        console.log(singleProduct);
-    }, [cartList]);
+            if (cartList) {
+                const cartFromLocal = JSON.parse(localStorage.getItem('cartList'));
+                const foundCartItem = cartFromLocal.find((element) => element?.id === parseInt(id));
+
+                setCartItem({ ...foundCartItem });
+                return;
+            }
+
+            // If the cartList doesn't exists then extract the data from gadgets array
+            const gadgetsFromLocal = JSON.parse(localStorage.getItem('gadgets'));
+            const foundCartItem = gadgetsFromLocal.find((element) => element?.id === parseInt(id));
+
+            setCartItem({ ...foundCartItem });
+
+        } catch (error) {
+            console.error('Error in fetching cartItem', error);
+        }
+    };
 
     const handleAddToCart = (item) => {
-        if (!cartList) {
-            // If cartList is not defined (user adding item for the first time)
-            const updatedCartList = [{ ...singleProduct, quantity: 1 }];
-            localStorage.setItem('cartList', JSON.stringify(updatedCartList));
+        // If the item exists then say item is already in the cart and don't add in cartList
+        const cartFromLocal = JSON.parse(localStorage.getItem('cartList'));
+        const foundCartItem = cartFromLocal.find((element) => element?.id === parseInt(id));
+
+        if (!foundCartItem) {
+            setCartItem({ ...item, quantity: 1 });
+            localStorage.setItem('cartList', JSON.stringify([{ ...cartItem, quantity: 1 }]));
         } else {
-            const productExistsInCart = cartList.some((element) => element?.id === singleProduct?.id);
-
-            if (!productExistsInCart) {
-                // Product not in cart, add it with quantity 1
-                const updatedCartList = [...cartList, { ...singleProduct, quantity: 1 }];
-                localStorage.setItem('cartList', JSON.stringify(updatedCartList));
-            }
-            // Else: Product already in cart, do nothing (quantity remains unchanged)
+            alert('Item is already in the cart!');
         }
 
-        setQuantityControlsVisible(true);
+        setIsQuantityControlsVisible(true);
+
     };
 
-    const handleIncrement = () => {
-        // Retrieve the cartList from localStorage
+    const handleIncrement = (item) => {
+        const updatedCart = { ...item, quantity: item?.quantity + 1 };
+        setCartItem(updatedCart);
+
+        updateItem(updatedCart);
+    };
+
+    const handleDecrement = (item) => {
+        const updatedCart = { ...item, quantity: item?.quantity - 1 };
+        setCartItem(updatedCart);
+
+        updateItem(updatedCart);
+    };
+
+    const updateItem = (item) => {
+        // Retrieve the existing items from localStorage
         const cartList = JSON.parse(localStorage.getItem('cartList'));
 
-        // Check if the cartList exists and the product with the given ID is in the list
-        if (cartList && cartList.some(item => item.id === singleProduct?.id)) {
-            // Increment the quantity of the product in cartList
-            const updatedCartList = cartList.map(item => {
-                if (item.id === singleProduct?.id) {
-                    return { ...item, quantity: item.quantity + 1 };
-                }
-                return item;
-            });
+        // Find the index of the item in the existing items array (assuming 'id' is the unique identifier)
+        const index = cartList.findIndex((element) => element?.id === item?.id);
 
-            // Update the 'cartList' in localStorage with the updated cartList
-            localStorage.setItem('cartList', JSON.stringify(updatedCartList));
+        // If the item exists in the existing items array, update it
+        if (index >= 0) {
+            cartList[index] = item;
+            localStorage.setItem('cartList', JSON.stringify(cartList));
         }
     };
-
-    const handleDecrement = () => {
-        // Retrieve the cartList from localStorage
-        const cartList = JSON.parse(localStorage.getItem('cartList'));
-
-        if (cartList && cartList.some(item => item?.id === singleProduct?.id)) {
-            const updatedCartList = cartList.map(item => {
-                if (item?.id === singleProduct?.id) {
-                    return { ...item, quantity: item?.quantity - 1 };
-                }
-                return item;
-            });
-
-            localStorage.setItem('cartList', JSON.stringify(updatedCartList));
-        }
-    };
-
 
     return (
         <div>
@@ -114,10 +119,10 @@ const productDetails = () => {
                     marginTop: '100px',
                 }}
             >
-                {singleProduct ? <div className="productDetail-parent container" key={singleProduct?.id}>
+                {cartItem ? <div className="productDetail-parent container" key={cartItem?.id}>
                     <div className="row">
                         <div className="productDetail-image col">
-                            <ImageGallery items={singleProduct?.images} showFullscreenButton={false} showPlayButton={false} />
+                            <ImageGallery items={cartItem?.images} showFullscreenButton={false} showPlayButton={false} />
                         </div>
                         <div
                             className="productDetail-content col"
@@ -127,32 +132,33 @@ const productDetails = () => {
                                 transition: 'opacity 0.3s ease-in-out',
                             }}
                         >
-                            <h1>{singleProduct?.name}</h1>
+                            <h1>{cartItem?.name}</h1>
                             <h4 className="productDetail-subheading">
-                                {singleProduct?.Description}
+                                {cartItem?.Description}
                             </h4>
                             <p>
-                                <b>$ {singleProduct?.price}</b>
+                                <b>$ {cartItem?.price}</b>
                             </p>
-                            <button id="addToCard-button" onClick={(singleProduct) => handleAddToCart(singleProduct)}>Add To Cart</button>
+                            <button id="addToCard-button" onClick={() => handleAddToCart(cartItem)}>Add To Cart</button>
 
                             <div style={{
-                                display: QuantityControlsVisible ? 'flex' : 'none',
+                                display: isQuantityControlsVisible ? 'flex' : 'none'
                             }}>
                                 <div className="quantity-controls">
-                                    <button className="control-button" onClick={handleIncrement}>+</button>
-                                    <div className="quantity-display">{cartItem?.quantity ? cartItem.quantity : '0'}</div>
-                                    <button className="control-button" onClick={handleDecrement}>-</button>
+                                    <button className="control-button" onClick={() => handleIncrement(cartItem)}>+</button>
+                                    <div className="quantity-display">{cartItem?.quantity}</div>
+                                    <button className="control-button" onClick={() => handleDecrement(cartItem)}>-</button>
                                 </div>
 
                                 <div className="total-price">
-                                    $ <b>{cartItem?.quantity ? cartItem?.quantity * singleProduct?.price : '0'}</b>
+                                    $ <b>{cartItem?.quantity ? cartItem?.quantity * cartItem?.price : '0'}</b>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-                </div> : <div className="no-product-found"><b>No Product found with the mentioned id:{id}...</b></div>}
+                </div> : <div className="no-product-found"><b>No Product found with the mentioned id...</b></div>}
+
+
             </div>
             <Footer></Footer>
         </div>
