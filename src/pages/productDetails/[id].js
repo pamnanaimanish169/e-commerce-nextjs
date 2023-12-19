@@ -50,17 +50,37 @@ const productDetails = () => {
 
             if (cartList) {
                 const cartFromLocal = JSON.parse(localStorage.getItem('cartList'));
-                const foundCartItem = cartFromLocal.find((element) => element?.id === parseInt(id));
+                const foundCartItem = cartFromLocal?.find((element) => element?.id === parseInt(id));
 
-                setCartItem({ ...foundCartItem });
-                return;
+                // If the cartList exists but the item is not present in the cartList
+                // then extract the data from the gadgets array
+                if (!foundCartItem) {
+
+                    const gadgetsFromLocal = JSON.parse(localStorage.getItem('gadgets')) || [];
+                    const newCartItem = gadgetsFromLocal?.find((element) => element?.id === parseInt(id));
+
+                    if (!newCartItem) {
+                        setCartItem(null);
+                        return;
+                    }
+                    setCartItem({ ...newCartItem, quantity: newCartItem?.quantity });
+                } else {
+                    setCartItem({ ...foundCartItem, quantity: foundCartItem?.quantity });
+
+                    if (foundCartItem.quantity > 0) {
+                        setIsQuantityControlsVisible(true);
+                    }
+                }
+
+            } else if (!cartList) {
+                // If the cartList doesn't exists then extract the data from gadgets array
+                const gadgetsFromLocal = JSON.parse(localStorage.getItem('gadgets'));
+                const foundCartItem = gadgetsFromLocal.find((element) => element?.id === parseInt(id));
+
+                setCartItem({ ...foundCartItem, quantity: foundCartItem?.quantity });
+            } else {
+                setCartItem(null);
             }
-
-            // If the cartList doesn't exists then extract the data from gadgets array
-            const gadgetsFromLocal = JSON.parse(localStorage.getItem('gadgets'));
-            const foundCartItem = gadgetsFromLocal.find((element) => element?.id === parseInt(id));
-
-            setCartItem({ ...foundCartItem });
 
         } catch (error) {
             console.error('Error in fetching cartItem', error);
@@ -68,19 +88,20 @@ const productDetails = () => {
     };
 
     const handleAddToCart = (item) => {
-        // If the item exists then say item is already in the cart and don't add in cartList
+        // If the item is not in the cart then add it in cartList
         const cartFromLocal = JSON.parse(localStorage.getItem('cartList'));
-        const foundCartItem = cartFromLocal.find((element) => element?.id === parseInt(id));
+        const foundCartItem = cartFromLocal?.find((element) => element?.id === parseInt(id));
 
-        if (!foundCartItem) {
+        if (!foundCartItem && cartFromLocal) {
             setCartItem({ ...item, quantity: 1 });
-            localStorage.setItem('cartList', JSON.stringify([{ ...cartItem, quantity: 1 }]));
+            const updatedCart = [...cartFromLocal, { ...cartItem, quantity: 1 }];
+            localStorage.setItem('cartList', JSON.stringify(updatedCart));
         } else {
-            alert('Item is already in the cart!');
+            setCartItem({ ...item, quantity: 1 });
+            localStorage.setItem('cartList', JSON.stringify([{ ...item, quantity: 1 }]));
         }
 
         setIsQuantityControlsVisible(true);
-
     };
 
     const handleIncrement = (item) => {
@@ -91,10 +112,15 @@ const productDetails = () => {
     };
 
     const handleDecrement = (item) => {
-        const updatedCart = { ...item, quantity: item?.quantity - 1 };
-        setCartItem(updatedCart);
+        if (item?.quantity > 0) {
+            const updatedCart = { ...item, quantity: item?.quantity - 1 };
+            setCartItem(updatedCart);
 
-        updateItem(updatedCart);
+            updateItem(updatedCart);
+
+        } else {
+            alert('Invalid quantity');
+        }
     };
 
     const updateItem = (item) => {

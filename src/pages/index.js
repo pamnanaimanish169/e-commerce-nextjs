@@ -24,7 +24,7 @@ export default function Home() {
 
     useEffect(() => {
         try {
-            setProductList(JSON.parse(localStorage.getItem('gadgets')));
+            setProductList(JSON.parse(localStorage.getItem('gadgets')) || []);
             // setIsLoading(false);
         } catch (error) {
             console.error('Error in fetching product details:', error);

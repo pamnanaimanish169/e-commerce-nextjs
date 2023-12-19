@@ -26,7 +26,7 @@ const productListing = () => {
                 if (data.message && data.message.includes('not found')) {
                     router.push('../404');
                 } else {
-                    data.images.forEach((element) => {
+                    data?.images?.forEach((element) => {
                         images.push({ thumbnail: element, original: element });
                     });
                     localStorage.setItem("productData", JSON.stringify(images));
